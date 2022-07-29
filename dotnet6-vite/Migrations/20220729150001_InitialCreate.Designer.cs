@@ -11,7 +11,7 @@ using dotnet6_vite.Helpers;
 namespace dotnet6_vite.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220729093718_InitialCreate")]
+    [Migration("20220729150001_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,15 +25,19 @@ namespace dotnet6_vite.Migrations
 
             modelBuilder.Entity("dotnet6_vite.Entities.Example", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Age")
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.HasKey("Id");
 
