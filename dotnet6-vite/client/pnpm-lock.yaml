@@ -23,7 +23,6 @@ specifiers:
   eslint-plugin-promise: ^6.0.0
   eslint-plugin-react: ^7.30.1
   framer-motion: ^6.5.1
-  husky: ^8.0.1
   postcss: ^8.4.14
   prettier: ^2.7.1
   react: ^18.2.0
@@ -68,7 +67,6 @@ devDependencies:
   eslint-plugin-prettier: 4.2.1_g4fztgbwjyq2fvmcscny2sj6fy
   eslint-plugin-promise: 6.0.0_eslint@8.20.0
   eslint-plugin-react: 7.30.1_eslint@8.20.0
-  husky: 8.0.1
   postcss: 8.4.14
   prettier: 2.7.1
   redux: 4.2.0
@@ -1912,12 +1910,6 @@ packages:
     dependencies:
       react-is: 16.13.1
     dev: false
-
-  /husky/8.0.1:
-    resolution: {integrity: sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==}
-    engines: {node: '>=14'}
-    hasBin: true
-    dev: true
 
   /ignore/5.2.0:
     resolution: {integrity: sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==}
