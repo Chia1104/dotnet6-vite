@@ -1,4 +1,4 @@
-namespace dotnet6_vite;
+namespace dotnet6_vite.Entities;
 
 public class WeatherForecast
 {

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using dotnet6_vite.Entities;
 
 namespace dotnet6_vite.Controllers;
 

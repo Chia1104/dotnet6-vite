@@ -20,7 +20,7 @@ $ cd dotnet6-vite
 $ dotnet restore
 
 # vite
-$ cd dotnet6-vite\client
+$ cd dotnet6-vite\Client
 $ pnpm install 
 ```
 
@@ -30,8 +30,22 @@ Generate the appsettings.Development.json file and add your DB connection string
 $ cp appsettings.Example.json appsettings.Development.json
 ```
 
+The .NET Entity Framework Core tools (dotnet ef) are used to generate EF Core migrations, to install the EF Core tools globally.
+
+```bash
+$ dotnet tool install -g dotnet-ef
+```
+
+Run the following command from the project root folder to install the EF Core design package, it provides cross-platform command line tooling support and is used to generate EF Core migrations.
+
+```bash
+$ dotnet ef migrations add InitialCreate
+
+$ dotnet ef database update
+```
+
 Run the app
 
 ```bash
-$ dotnet run
+$ dotnet run watch
 ```
