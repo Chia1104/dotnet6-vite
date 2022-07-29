@@ -19,10 +19,8 @@ module.exports = {
         bgPink: "rgba(255,107,237,0.35)",
         bgBlue: "rgba(117,149,255,0.3)",
       },
-      keyframes: {
-      },
-      animation: {
-      },
+      keyframes: {},
+      animation: {},
     },
   },
   corePlugins: {

@@ -12,6 +12,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="6.0.7" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.5" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
 
@@ -27,10 +28,6 @@
       <_ContentIncludedByDefault Remove="client\tsconfig.json" />
       <_ContentIncludedByDefault Remove="client\tsconfig.node.json" />
       <_ContentIncludedByDefault Remove="client\pnpm-lock.yaml" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="client\src\components" />
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

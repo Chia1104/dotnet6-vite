@@ -1,9 +1,11 @@
 ﻿import { type FC } from "react";
 
-export const Home: FC = () => {
+const Home: FC = () => {
   return (
-    <div className="">
-      <h1>Hello world</h1>
+    <div className="c-container main">
+      <h1>HOME PAGE</h1>
     </div>
   );
 };
+
+export default Home;
