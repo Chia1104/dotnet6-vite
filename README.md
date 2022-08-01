@@ -24,7 +24,7 @@ $ cd dotnet6-vite\Client
 $ pnpm install 
 ```
 
-Generate the appsettings.Development.json file and add your DB connection string
+Generate the appsettings.Development.json file and add your DB connection string.
 
 ```bash
 $ cp appsettings.Example.json appsettings.Development.json
@@ -44,7 +44,14 @@ $ dotnet ef migrations add InitialCreate
 $ dotnet ef database update
 ```
 
-Run the app
+Generate https certificate before running the app.
+
+```bash
+$ cd dotnet6-vite\Client
+$ pnpm prestart
+```
+
+Run the app.
 
 ```bash
 $ dotnet run watch
