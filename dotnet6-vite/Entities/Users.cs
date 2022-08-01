@@ -6,12 +6,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
-public class Example
+public class Users
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column(TypeName = "uuid")]
-    public Guid id { get; set; }
+    public string id { get; set; }
     
     public string name { get; set; }
     
@@ -21,7 +21,7 @@ public class Example
     
     public string? remember_token { get; set; }
     
-    [Column(TypeName = "timestamp")]
+    [Column(TypeName = "datetime")]
     [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
     public DateTime created_at { get; set; }
 }
