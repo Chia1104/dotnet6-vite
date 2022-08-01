@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "prestart": "node aspnetcore-https.js",
+    "prestart": "node aspnetcore-https.cjs",
     "dev": "vite --debug",
     "build": "tsc && vite build",
     "preview": "vite preview",
