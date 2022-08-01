@@ -20,8 +20,19 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint", "prettier"],
   rules: {
+    "react/react-in-jsx-scope": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/no-unused-vars": "warn",
+    "prettier/prettier": [
+      "warn",
+      {
+        endOfLine: "auto",
+        printWidth: 80,
+        tabWidth: 2,
+        trailingComma: "es5",
+        bracketSameLine: true,
+      },
+    ],
   },
 };
