@@ -1,29 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using dotnet6_vite.Entities;
 using dotnet6_vite.Dto;
+using dotnet6_vite.Services;
 
 namespace dotnet6_vite.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ExampleController
+public class ExampleController : ControllerBase
 {
-    private readonly ILogger<ExampleController> _logger;
-    
-    public ExampleController(ILogger<ExampleController> logger)
+    private IExampleService _exampleService;
+
+    public ExampleController(IExampleService exampleService)
     {
-        _logger = logger;
+        _exampleService = exampleService;
     }
-    
+
     [HttpPost(Name = "PostNewExample")]
     public IActionResult PostNewExample(NewExample exampleDto)
     {
-        var example = new Example();
-        example.id = System.Guid.NewGuid();
-        example.name = exampleDto.name;
-        example.email = exampleDto.email;
-        example.created_at = DateTime.Now;
-
-        return null;
+        _exampleService.CreateExample(exampleDto);
+        return Ok(new { message = "Example created" });
     }
 }

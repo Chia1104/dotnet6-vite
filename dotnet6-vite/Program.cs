@@ -20,6 +20,10 @@ if (app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+{
+    var services = builder.Services;
+}
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

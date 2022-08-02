@@ -1,7 +1,6 @@
 ﻿namespace dotnet6_vite.Dto;
 
 using System.ComponentModel.DataAnnotations;
-using dotnet6_vite.Entities;
 
 public class NewExample
 {
