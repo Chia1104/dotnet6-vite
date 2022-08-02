@@ -10,6 +10,13 @@ This is a practice project for [.Net Core](https://dotnet.microsoft.com/) and [R
   <img src="https://skillicons.dev/icons?i=ts,cs,vite,react,dotnet,postgres" />
 </div>
 
+## Features
+
+ - [x] React with Vite
+ - [ ] Authentication([JWT](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer/7.0.0-preview.6.22330.3))
+ - [ ] Algolia Search([Algolia](https://www.algolia.com/))
+ - [ ] Dockerized
+
 ## Get Started
 
 Install dependencies
