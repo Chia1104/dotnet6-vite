@@ -5,10 +5,10 @@ using dotnet6_vite.Services;
 namespace dotnet6_vite.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/[controller]/[action]")]
 public class ExampleController : ControllerBase
 {
-    private IExampleService _exampleService;
+    private readonly IExampleService _exampleService;
 
     public ExampleController(IExampleService exampleService)
     {
@@ -16,7 +16,7 @@ public class ExampleController : ControllerBase
     }
 
     [HttpPost(Name = "PostNewExample")]
-    public IActionResult PostNewExample(NewExample exampleDto)
+    public IActionResult PostNewExample([FromForm] NewExample exampleDto)
     {
         _exampleService.CreateExample(exampleDto);
         return Ok(new { message = "Example created" });

@@ -12,7 +12,7 @@ public interface IExampleService
 
 public class ExampleService : IExampleService
 {
-    private IExampleRepository _exampleRepository;
+    private readonly IExampleRepository _exampleRepository;
 
     public ExampleService(IExampleRepository exampleRepository)
     {
