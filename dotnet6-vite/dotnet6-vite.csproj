@@ -30,6 +30,12 @@
     <ItemGroup>
         <!-- Don't publish the SPA source files, but do show them in the project files list -->
         <Content Remove="$(SpaRoot)**" />
+        <Content Include="Client\src\Components\Animation\ErrorAnimation\9195-error.json" />
+        <Content Include="Client\src\Components\Animation\GamepadLoader\44376-3d-gamepad-animation.json" />
+        <Content Include="Client\src\Components\Animation\GameStorySec\112229-game-asset.json" />
+        <Content Include="Client\src\Components\Animation\GameStory\109944-game-asset.json" />
+        <Content Include="Client\src\Components\Animation\GoodGame\91392-good-game-gg.json" />
+        <Content Include="Client\src\Components\Animation\NotFoundAnimation\6734-404-error-glitch-2.json" />
         <None Remove="$(SpaRoot)**" />
         <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
     </ItemGroup>

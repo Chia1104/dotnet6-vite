@@ -93,12 +93,12 @@
     bg-white/80 text-sec-text dark:text-white dark:bg-dark/80 backdrop-blur-md transition ease-in-out rounded px-5 py-3 text-2xl
   }
 
-  .footer {
+  .c-footer {
     @apply
     flex py-8 border-t-[1px] border-solid justify-center items-center border-gray-200 dark:border-gray-800 bg-white/80 text-sec-text dark:text-white dark:bg-dark/80 backdrop-blur-md
   }
 
-  .main {
+  .c-main {
     min-height: 100vh;
     padding: 4rem 2rem;
     flex: 1;
@@ -108,38 +108,38 @@
     align-items: center;
   }
 
-  .footer a {
+  .c-footer a {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
   }
 
-  .title a {
+  .c-title a {
     color: #0070f3;
     text-decoration: none;
   }
 
-  .title a:hover,
-  .title a:focus,
-  .title a:active {
+  .c-title a:hover,
+  .c-title a:focus,
+  .c-title a:active {
     text-decoration: underline;
   }
 
-  .title {
+  .c-title {
     @apply text-4xl my-2
   }
 
-  .subtitle {
+  .c-subtitle {
     @apply text-2xl
   }
 
-  .description {
+  .c-description {
     line-height: 1.5;
     font-size: 1.5rem;
   }
 
-  .code {
+  .c-code {
     background: #fafafa;
     border-radius: 5px;
     padding: 0.75rem;
@@ -148,7 +148,7 @@
     Bitstream Vera Sans Mono, Courier New, monospace;
   }
 
-  .card {
+  .c-card {
     margin: 1rem;
     padding: 1.5rem;
     text-align: left;
@@ -160,25 +160,25 @@
     max-width: 300px;
   }
 
-  .card:hover,
-  .card:focus,
-  .card:active {
+  .c-card:hover,
+  .c-card:focus,
+  .c-card:active {
     color: #0070f3;
     border-color: #0070f3;
   }
 
-  .card h2 {
+  .c-card h2 {
     margin: 0 0 1rem 0;
     font-size: 1.5rem;
   }
 
-  .card p {
+  .c-card p {
     margin: 0;
     font-size: 1.25rem;
     line-height: 1.5;
   }
 
-  .logo {
+  .c-logo {
     height: 1em;
     margin-left: 0.5rem;
   }
@@ -226,7 +226,7 @@
     background-image: linear-gradient(transparent 60%, #8086ba 55%);
   }
 
-  .modal {
+  .c-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -261,9 +261,4 @@ a {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-::selection {
-  color: #fff;
-  background: rgba(255,155,26,0.5);
 }
