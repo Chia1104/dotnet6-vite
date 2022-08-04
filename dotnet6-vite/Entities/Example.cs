@@ -23,6 +23,5 @@ public class Example
     public string? remember_token { get; set; }
     
     [Column(TypeName = "timestamp")]
-    [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
     public DateTime created_at { get; set; }
 } 
