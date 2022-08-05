@@ -1,10 +1,9 @@
-﻿namespace dotnet6_vite.Repositories;
-
-using dotnet6_vite.Entities;
+﻿using dotnet6_vite.Entities;
 using AutoMapper;
 using dotnet6_vite.Dto.Example;
 using dotnet6_vite.Helpers;
 
+namespace dotnet6_vite.Repositories;
 
 public interface IExampleRepository
 {

@@ -5,7 +5,7 @@ using dotnet6_vite.Services;
 namespace dotnet6_vite.Controllers;
 
 [ApiController]
-[Microsoft.AspNetCore.Mvc.Route("api/[controller]/[action]")]
+[Route("api/[controller]/[action]")]
 public class ExampleController : ControllerBase
 {
     private readonly IExampleService _exampleService;

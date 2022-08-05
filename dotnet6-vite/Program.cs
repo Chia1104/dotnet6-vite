@@ -16,8 +16,17 @@ builder.Services.AddCors();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+builder.Services.AddScoped<IRepository, Repository>();
 builder.Services.AddScoped<IExampleService, ExampleService>();
 builder.Services.AddScoped<IExampleRepository, ExampleRepository>();
+builder.Services.AddScoped<IArmorService, ArmorService>();
+builder.Services.AddScoped<IArmorRepository, ArmorRepository>();
+builder.Services.AddScoped<IHeadgearService, HeadgearService>();
+builder.Services.AddScoped<IHeadgearRepository, HeadgearRepository>();
+builder.Services.AddScoped<IShieldService, ShieldService>();
+builder.Services.AddScoped<IShieldRepository, ShieldRepository>();
+builder.Services.AddScoped<IWeaponService, WeaponService>();
+builder.Services.AddScoped<IWeaponRepository, WeaponRepository>();
 
 var app = builder.Build();
 

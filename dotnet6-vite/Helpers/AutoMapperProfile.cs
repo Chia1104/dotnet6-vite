@@ -3,6 +3,10 @@
 using AutoMapper;
 using dotnet6_vite.Entities;
 using dotnet6_vite.Dto.Example;
+using dotnet6_vite.Dto.Armor;
+using dotnet6_vite.Dto.Headgear;
+using dotnet6_vite.Dto.Shield;
+using dotnet6_vite.Dto.Weapon;
 
 public class AutoMapperProfile : Profile
 {
@@ -20,5 +24,10 @@ public class AutoMapperProfile : Profile
                     return true;
                 }
             ));
+        CreateMap<NewArmorDto, Armor>();
+        CreateMap<NewHeadgearDto, Headgear>();
+        CreateMap<NewShieldDto, Shield>();
+        CreateMap<NewWeaponDto, Weapon>();
+
     }
 }

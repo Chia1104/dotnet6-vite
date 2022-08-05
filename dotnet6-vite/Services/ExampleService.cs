@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 using dotnet6_vite.Helpers;
-
-namespace dotnet6_vite.Services;
-
 using dotnet6_vite.Dto.Example;
 using dotnet6_vite.Repositories;
 using dotnet6_vite.Entities;
+
+namespace dotnet6_vite.Services;
 
 public interface IExampleService
 {
