@@ -50,5 +50,6 @@ app.MapControllerRoute(
 app.MapFallbackToFile("index.html");
 
 app.UseMiddleware<ErrorHandlerMiddleware>();
+app.UseMiddleware<JwtMiddleware>();
 
 app.Run();
