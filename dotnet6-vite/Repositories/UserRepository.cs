@@ -23,7 +23,9 @@ public class UserRepository : IUserRepository
     
     public User GetByEmail(string email)
     {
-        return _repository.GetContext().Users.Find(email);
+        return _repository.GetContext().Users.Where(
+            u => u.Email == email
+        ).FirstOrDefault();
     }
     
     public User GetById(Guid id)

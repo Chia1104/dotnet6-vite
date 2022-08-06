@@ -1,4 +1,6 @@
-﻿namespace dotnet6_vite.Helpers;
+﻿using dotnet6_vite.Dto.User;
+
+namespace dotnet6_vite.Helpers;
 
 using AutoMapper;
 using dotnet6_vite.Entities;
@@ -28,6 +30,8 @@ public class AutoMapperProfile : Profile
         CreateMap<NewHeadgearDto, Headgear>();
         CreateMap<NewShieldDto, Shield>();
         CreateMap<NewWeaponDto, Weapon>();
-
+        CreateMap<LoginDto, User>();
+        CreateMap<RegisterDto, User>();
+        CreateMap<AuthResultDto, User>();
     }
 }
