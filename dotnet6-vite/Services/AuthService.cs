@@ -11,6 +11,7 @@ public interface IAuthService
 {
     AuthResultDto Login(LoginDto login);
     AuthResultDto Register(RegisterDto register);
+    TokenDetailsDto GetUserDetails(string accessToken);
 }
 
 public class AuthService : IAuthService
@@ -33,7 +34,7 @@ public class AuthService : IAuthService
         var user = _userRepository.GetByEmail(login.Email);
         
         if (user == null || !BCrypt.Net.BCrypt.Verify(login.Password, user.Password))
-            throw new AppException("Invalid credentials");
+            throw new UnauthorizedAccessException("Invalid credentials");
 
         var accessToken = _authRepository.GenerateAccessToken(user);
         
@@ -52,5 +53,10 @@ public class AuthService : IAuthService
         
         var accessToken = _authRepository.GenerateAccessToken(user);
         return new AuthResultDto(user, accessToken);
+    }
+    
+    public TokenDetailsDto GetUserDetails(string accessToken)
+    {
+        return _authRepository.DecodeAccessToken(accessToken);
     }
 }

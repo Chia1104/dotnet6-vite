@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using dotnet6_vite.Dto.User;
 using dotnet6_vite.Services;
+using dotnet6_vite.Helpers;
+using Microsoft.Net.Http.Headers;
 
 namespace dotnet6_vite.Controllers;
 
@@ -32,6 +34,18 @@ public class AuthController : ControllerBase
         {
             message = "Register success",
             data = _authService.Register(registerDto)
+        });
+    }
+    
+    [HttpGet(Name = "GetUserDetails")]
+    [Authorize]
+    public IActionResult GetUserDetails()
+    {
+        var accessToken = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
+        return Ok(new
+        {
+            message = "Get user details success",
+            data = _authService.GetUserDetails(accessToken)
         });
     }
 }

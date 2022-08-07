@@ -38,6 +38,9 @@ public class ErrorHandlerMiddleware
                 case KeyNotFoundException e:
                     response.StatusCode = (int)HttpStatusCode.NotFound;
                     break;
+                case UnauthorizedAccessException e:
+                    response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                    break;
                 default:
                     _logger.LogError(error, error.Message);
                     response.StatusCode = (int)HttpStatusCode.NotAcceptable;
