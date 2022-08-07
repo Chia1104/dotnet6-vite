@@ -9,12 +9,12 @@ namespace dotnet6_vite.Helpers;
 public class JwtMiddleware
 {
     private readonly RequestDelegate _next;
-    private readonly JwtSetting _jwtSettings;
+    private readonly JwtSetting _jwtSetting;
     
-    public JwtMiddleware(RequestDelegate next, IOptions<JwtSetting> jwtSettings)
+    public JwtMiddleware(RequestDelegate next, IOptions<JwtSetting> jwtSetting)
     {
         _next = next;
-        _jwtSettings = jwtSettings.Value;
+        _jwtSetting = jwtSetting.Value;
     }
     
     public async Task Invoke(HttpContext context, IUserService userService)
@@ -22,17 +22,17 @@ public class JwtMiddleware
         var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
         if (token != null)
-            attachUserToContext(context, userService, token);
+            AttachUserToContext(context, userService, token);
 
         await _next(context);
     }
 
-    private void attachUserToContext(HttpContext context, IUserService userService, string token)
+    private void AttachUserToContext(HttpContext context, IUserService userService, string token)
     {
         try
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_jwtSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(_jwtSetting.Secret);
             tokenHandler.ValidateToken(token, new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,
