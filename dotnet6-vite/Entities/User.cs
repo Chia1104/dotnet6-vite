@@ -7,14 +7,6 @@ using System.Text.Json.Serialization;
 
 public class User
 {
-    public User()
-    {
-        this.Armors = new HashSet<Armor>();
-        this.Weapons = new HashSet<Weapon>();
-        this.Headgears = new HashSet<Headgear>();
-        this.Shields = new HashSet<Shield>();
-    }
-    
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column(TypeName = "uuid")]
@@ -37,11 +29,19 @@ public class User
     
     public bool IsActive { get; set; }
     
-    public ICollection<Armor> Armors { get; set; }
+    [Column(TypeName = "uuid")]
+    public Guid? ArmorId { get; set; }
+    public UserArmor? Armor { get; set; }
     
-    public ICollection<Headgear> Headgears { get; set; }
+    [Column(TypeName = "uuid")]
+    public Guid? HeadgearId { get; set; }
+    public UserHeadgear? Headgear { get; set; }
     
-    public ICollection<Shield> Shields { get; set; }
+    [Column(TypeName = "uuid")]
+    public Guid? ShieldId { get; set; }
+    public UserShield? Shield { get; set; }
     
-    public ICollection<Weapon> Weapons { get; set; }
+    [Column(TypeName = "uuid")]
+    public Guid? WeaponId { get; set; }
+    public UserWeapon? Weapon { get; set; }
 }

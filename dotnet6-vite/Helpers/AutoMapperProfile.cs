@@ -27,6 +27,10 @@ public class AutoMapperProfile : Profile
                 }
             ));
         CreateMap<NewArmorDto, Armor>();
+        CreateMap<UpdateUserArmorDto, UserArmor>();
+        CreateMap<UpdateUserHeadgearDto, UserHeadgear>();
+        CreateMap<UpdateUserShieldDto, UserShield>();
+        CreateMap<UpdateUserWeaponDto, UserWeapon>();
         CreateMap<NewHeadgearDto, Headgear>();
         CreateMap<NewShieldDto, Shield>();
         CreateMap<NewWeaponDto, Weapon>();

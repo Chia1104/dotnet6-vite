@@ -6,11 +6,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 public class Weapon
 {
-    public Weapon()
-    {
-        this.Users = new HashSet<User>();
-    }
-    
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column(TypeName = "uuid")]
@@ -31,6 +26,4 @@ public class Weapon
     public WeaponCategory Category { get; set; }
     
     public int Heaviness { get; set; }
-    
-    public ICollection<User> Users { get; set; }
 }

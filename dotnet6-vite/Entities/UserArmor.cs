@@ -4,12 +4,12 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-public class Shield
+public class UserArmor
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column(TypeName = "uuid")]
-    public Guid ShieldId { get; set; }
+    public Guid ArmorId { get; set; }
     
     public string Name { get; set; }
     
@@ -19,9 +19,9 @@ public class Shield
     
     public int Defense { get; set; }
     
-    public int Attack { get; set; }
-    
     public int Level { get; set; }
     
     public int Heaviness { get; set; }
+    
+    public List<User> Users { get; set; }
 }

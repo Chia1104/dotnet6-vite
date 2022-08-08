@@ -6,11 +6,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 public class Armor
 {
-    public Armor()
-    {
-        this.Users = new HashSet<User>();
-    }
-    
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column(TypeName = "uuid")]
@@ -27,6 +22,4 @@ public class Armor
     public int Level { get; set; }
     
     public int Heaviness { get; set; }
-    
-    public ICollection<User> Users { get; set; }
 }

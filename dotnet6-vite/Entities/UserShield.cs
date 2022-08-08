@@ -4,7 +4,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-public class Shield
+public class UserShield
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,4 +24,6 @@ public class Shield
     public int Level { get; set; }
     
     public int Heaviness { get; set; }
+    
+    public List<User> Users { get; set; }
 }

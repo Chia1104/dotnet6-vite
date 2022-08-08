@@ -27,4 +27,10 @@ public class RegisterDto
     [Required]
     [EnumDataType(typeof(Role))]
     public string Role { get; set; }
+
+    public bool IsActive
+    {
+        get => true;
+        set => value = true;
+    }
 }
