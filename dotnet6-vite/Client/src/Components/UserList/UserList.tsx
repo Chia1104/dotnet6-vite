@@ -1,19 +1,19 @@
-﻿import { type FC } from 'react';
-import type { User } from '@chia/util/types';
-import UserItem from './UserItem';
+﻿import { type FC } from "react";
+import type { User } from "@chia/util/types";
+import UserItem from "./UserItem";
 
 interface Props {
-    users: User[];
+  users: User[];
 }
 
 const UserList: FC<Props> = ({ users }) => {
-    return (
-        <div>
-            {users.map(user => (
-                <UserItem key={user.userId} user={user} />
-            ))}
-        </div>
-    );
-}
+  return (
+    <div>
+      {users.map((user) => (
+        <UserItem key={user.userId} user={user} />
+      ))}
+    </div>
+  );
+};
 
 export default UserList;
