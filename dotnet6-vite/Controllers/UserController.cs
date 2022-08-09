@@ -112,7 +112,7 @@ public class UserController : ControllerBase
     
     [HttpPut(Name = "UpdateUserHeadgear")]
     [Authorize]
-    public async Task<IActionResult> UpdateUserHedgear(Guid headgearId)
+    public async Task<IActionResult> UpdateUserHeadgear(Guid headgearId)
     {
         var accessToken = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
         return Ok(new

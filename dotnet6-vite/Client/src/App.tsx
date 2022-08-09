@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "@chia/pages/Home";
 import Example from "@chia/pages/Example";
+import UserListPage from "@chia/pages/User";
 import { CssBaseline, GeistProvider } from "@geist-ui/core";
 import { ErrorBoundary } from "@chia/Components/Exception/ErrorBoundary";
 import LoginPage from "@chia/pages/Login";
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="example" element={<Example />} />
             <Route path="login" element={<LoginPage />} />
+            <Route path="users" element={<UserListPage />} />
           </Routes>
         </GeistProvider>
       </Provider>
