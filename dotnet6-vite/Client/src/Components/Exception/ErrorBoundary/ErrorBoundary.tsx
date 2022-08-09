@@ -27,7 +27,7 @@ export class ErrorBoundary extends Component<Props, State> {
     if (this.state.hasError) {
       return (
         <div className="w-screen h-screen c-container flex flex-col justify-center items-center">
-          <h1 className="text-warning">Oops, there is an error!</h1>
+          <h1 className="text-warning text-2xl">Oops, there is an error!</h1>
           <div className="mx-auto w-full md:w-[700px]">
             <ErrorAnimation />
           </div>

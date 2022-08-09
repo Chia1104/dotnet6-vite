@@ -1,6 +1,6 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import actionSheetReducer from "./modules/ActionSheet/actionSheet.slice";
+import authReducer from "./modules/Auth";
 
 export const reducers = combineReducers({
-  actionSheet: actionSheetReducer,
+  auth: authReducer,
 });
