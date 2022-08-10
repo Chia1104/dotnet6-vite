@@ -17,10 +17,7 @@ const Button: FC<Props> = (props) => {
   const { text } = props;
   return (
     <button
-      className={cx(
-        "group relative inline-flex transition ease-in-out rounded self-center",
-        !props.disabled && "hover:dark:bg-secondary hover:bg-primary"
-      )}
+      className="group relative inline-flex transition ease-in-out rounded self-center bg-primary"
       {...props}>
       <span
         className={cx(

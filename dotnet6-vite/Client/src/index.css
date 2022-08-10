@@ -13,34 +13,24 @@
     hover:border-b-2 border-primary transition ease-in-out
   }
 
-  .c-text-primary {
-    @apply
-    text-black dark:text-white transition ease-in-out
-  }
-
-  .c-text-secondary {
-    @apply
-    text-sec-text dark:text-white transition ease-in-out
-  }
-
   .c-description {
     @apply
-    text-lg text-sec-text dark:text-gray-400 transition ease-in-out
+    text-lg dark:text-gray-400 transition ease-in-out
   }
 
   .c-bg-primary {
     @apply
-    bg-[#dddddd] text-black dark:text-white dark:bg-black transition ease-in-out
+    bg-[#180032] transition ease-in-out
   }
 
   .c-bg-secondary {
     @apply
-    bg-white/80 text-sec-text dark:text-white dark:bg-dark/80 backdrop-blur-md transition ease-in-out
+    bg-code/80 backdrop-blur-md transition ease-in-out
   }
 
   .c-border-primary {
     @apply
-    border-gray-200 dark:border-gray-800
+    border-gray-800 dark:border-gray-800
   }
 
   .c-text-purple-to-blue {
@@ -83,6 +73,16 @@
     bg-gradient-to-r from-[#F9C851] via-[#FCA5A5] to-[#FECACA]
   }
 
+  .c-bg-gradient-primary-to-t {
+    @apply
+    bg-gradient-to-t from-[rgba(24,0,50,0)] via-[rgba(24,0,50,0)] to-[#180032]
+  }
+
+  .c-bg-gradient-primary-to-b {
+    @apply
+    bg-gradient-to-b from-[rgba(24,0,50,0)] via-[rgba(24,0,50,0)] to-[#180032]
+  }
+
   .c-button-primary {
     @apply
     bg-primary rounded-full drop-shadow-lg text-white hover:bg-secondary transition ease-in-out flex justify-center items-center px-3 py-1
@@ -90,7 +90,7 @@
 
   .c-button-secondary {
     @apply
-    bg-white/80 text-sec-text dark:text-white dark:bg-dark/80 backdrop-blur-md transition ease-in-out rounded px-5 py-3 text-2xl
+    bg-code/80 backdrop-blur-md transition ease-in-out rounded px-5 py-3 text-2xl
   }
 
   .c-footer {
@@ -106,24 +106,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-
-  .c-footer a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-  }
-
-  .c-title a {
-    color: #0070f3;
-    text-decoration: none;
-  }
-
-  .c-title a:hover,
-  .c-title a:focus,
-  .c-title a:active {
-    text-decoration: underline;
+    @apply text-white
   }
 
   .c-title {
@@ -139,50 +122,6 @@
     font-size: 1.5rem;
   }
 
-  .c-code {
-    background: #fafafa;
-    border-radius: 5px;
-    padding: 0.75rem;
-    font-size: 1.1rem;
-    font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-  }
-
-  .c-card {
-    margin: 1rem;
-    padding: 1.5rem;
-    text-align: left;
-    color: inherit;
-    text-decoration: none;
-    border: 1px solid #eaeaea;
-    border-radius: 10px;
-    transition: color 0.15s ease, border-color 0.15s ease;
-    max-width: 300px;
-  }
-
-  .c-card:hover,
-  .c-card:focus,
-  .c-card:active {
-    color: #0070f3;
-    border-color: #0070f3;
-  }
-
-  .c-card h2 {
-    margin: 0 0 1rem 0;
-    font-size: 1.5rem;
-  }
-
-  .c-card p {
-    margin: 0;
-    font-size: 1.25rem;
-    line-height: 1.5;
-  }
-
-  .c-logo {
-    height: 1em;
-    margin-left: 0.5rem;
-  }
-
   .c-link {
     @apply c-link-underline c-link-underline-secondary
   }
@@ -193,7 +132,7 @@
     background-position: 0 100%;
     background-repeat: no-repeat;
     transition: background-size .2s ease-in-out;
-    background-image: linear-gradient(transparent, transparent), linear-gradient(#ff9b1a, #ff9b1a)
+    background-image: linear-gradient(transparent, transparent), linear-gradient(#4bf4e0, #4bf4e0)
   }
 
   .c-link-underline {
@@ -206,7 +145,7 @@
   }
 
   .c-link-underline-secondary {
-    background-image: linear-gradient(transparent, transparent), linear-gradient(#ff9b1a, #ff9b1a)
+    background-image: linear-gradient(transparent, transparent), linear-gradient(#4bf4e0, #4bf4e0)
   }
 
   .c-link-underline:hover {
@@ -215,11 +154,11 @@
   }
 
   .c-text-bg-primary-half {
-    background-image: linear-gradient(transparent 60%, #2B2E4A 55%);
+    background-image: linear-gradient(transparent 60%, rgba(248,28,229,0.65) 55%);
   }
 
   .c-text-bg-sec-half {
-    background-image: linear-gradient(transparent 60%, rgba(255, 155, 26, 0.8) 55%);
+    background-image: linear-gradient(transparent 60%, #4bf4e0 55%);
   }
 
   .c-text-bg-info-half {
@@ -261,4 +200,9 @@ a {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+::selection {
+  color: #fff;
+  @apply bg-primary
 }
