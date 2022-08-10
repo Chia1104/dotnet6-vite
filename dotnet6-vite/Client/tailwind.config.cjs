@@ -3,9 +3,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#2B2E4A",
-        secondary: "rgba(255,155,26,0.65)",
-        "sec-text": "#444444",
+        primary: "#aaffec",
+        secondary: "rgba(248,28,229,0.65)",
+        "sec-text": "#646464",
         success: "#4caf50",
         info: "#2196f3",
         warning: "#ff9800",
