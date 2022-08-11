@@ -10,7 +10,7 @@ const Home: FC = () => {
   const checkUser = () => (userData ? navigate("/users") : navigate("/login"));
   return (
     <div className="c-main c-container">
-      <div className="w-full h-full flex justify-center items-end fixed top-0 left-0 -z-10 brightness-50">
+      <div className="w-full md:w-2/3 h-1/2 flex justify-center items-end fixed bottom-0 -z-10 brightness-50">
         <GameStorySec />
       </div>
       <h1 className="fixed top-14 c-text-purple-to-pink">

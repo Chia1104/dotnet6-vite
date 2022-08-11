@@ -9,8 +9,7 @@ interface Props {
 const RequireAuth: FC<Props> = ({ children }) => {
   const userData = useReadLocalStorage("userData");
 
-  if (!userData)
-    return <Navigate to="/login" state={{ from: location }} replace />;
+  if (!userData) return <Navigate to="/login" state={{ from: location }} />;
 
   return <>{children}</>;
 };

@@ -8,7 +8,7 @@ interface Props {
 
 const UserList: FC<Props> = ({ users }) => {
   return (
-    <div>
+    <div className="w-full c-bg-secondary rounded-2xl shadow-2xl overflow-hidden">
       {users.map((user) => (
         <UserItem key={user.userId} user={user} />
       ))}

@@ -10,7 +10,7 @@ const IfLogined: FC<Props> = ({ children }) => {
   const userData = useReadLocalStorage("userData");
   const location = useLocation();
 
-  if (userData) return <Navigate to="/" state={{ from: location }} replace />;
+  if (userData) return <Navigate to="/" state={{ from: location }} />;
 
   return <>{children}</>;
 };
