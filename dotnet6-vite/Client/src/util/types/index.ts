@@ -8,3 +8,4 @@ export * from "./armor";
 export * from "./headgear";
 export * from "./shield";
 export * from "./weapon";
+export * from "./localUser";

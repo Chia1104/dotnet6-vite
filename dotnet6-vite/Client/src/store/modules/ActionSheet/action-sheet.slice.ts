@@ -9,7 +9,13 @@ const actionSheetSlice = createSlice({
   reducers: actionSheetReducer,
 });
 
-export const { activeDrawer } = actionSheetSlice.actions;
+export const {
+  activeDrawer,
+  activeEditArmorModal,
+  activeEditHeadgearModal,
+  activeEditWeaponModal,
+  activeEditShieldModal,
+} = actionSheetSlice.actions;
 
 export const selectActionSheet = (state: AppState) => state.actionSheet;
 

@@ -4,16 +4,16 @@ import { selectAllUsers } from "@chia/store/modules/User";
 import { getAllUsersAsync } from "@chia/store/modules/User/actions";
 import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 import { useAppSelector } from "@chia/hooks/useAppSelector";
-import { useLocalStorage } from "usehooks-ts";
+import { useReadLocalStorage } from "usehooks-ts";
+import type { LocalUser } from "@chia/util/types";
 
 const UserListPage: FC = () => {
   const dispatch = useAppDispatch();
   const users = useAppSelector(selectAllUsers);
-  const [userData, setUserData] = useLocalStorage("userData", null);
+  const userData = useReadLocalStorage<LocalUser>("userData");
   useEffect(() => {
     if (!users.data.data)
-      // @ts-ignore
-      dispatch(getAllUsersAsync(userData.accessToken));
+      dispatch(getAllUsersAsync(userData?.accessToken || ""));
   }, []);
   return (
     <div className="c-main c-container">

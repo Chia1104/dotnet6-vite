@@ -1,13 +1,15 @@
-﻿import { type FC } from "react";
+﻿import { type FC, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import GameStorySec from "@chia/Components/Animation/GameStorySec";
 import ButtonPrimary from "@chia/Components/ButtonPrimary";
 import { useReadLocalStorage } from "usehooks-ts";
+import type { LocalUser } from "@chia/util/types";
 
 const Home: FC = () => {
   const navigate = useNavigate();
-  const userData = useReadLocalStorage("userData");
+  const userData = useReadLocalStorage<LocalUser>("userData");
   const checkUser = () => (userData ? navigate("/users") : navigate("/login"));
+
   return (
     <div className="c-main c-container">
       <div className="w-full md:w-2/3 h-1/2 flex justify-center items-end fixed bottom-0 -z-10 brightness-50">

@@ -13,6 +13,7 @@ import Button from "@chia/Components/Button";
 import Spinner from "@chia/Components/Spinner";
 import GameStory from "@chia/Components/Animation/GameStory";
 import Back from "@chia/Components/Icons/Back";
+import type { LocalUser } from "@chia/util/types";
 
 const LoginPage: FC = () => {
   const { setToast } = useToasts();
@@ -22,7 +23,10 @@ const LoginPage: FC = () => {
   const dispatch = useAppDispatch();
   const loginState = useAppSelector(selectLoginState);
   const authData = useAppSelector(selectAuthData);
-  const [userData, setUserData] = useLocalStorage("userData", null);
+  const [userData, setUserData] = useLocalStorage(
+    "userData",
+    null as LocalUser | null
+  );
   const navigate = useNavigate();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

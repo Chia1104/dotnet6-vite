@@ -9,13 +9,10 @@ import RequireAuth from "@chia/Components/RequireAuth";
 import IfLogined from "@chia/Components/IfLogined";
 import { type FC } from "react";
 import UserDetailPage from "@chia/pages/User/UserDetail";
-import Redirect from "@chia/Components/Redirect";
-import { useReadLocalStorage } from "usehooks-ts";
+import { EditArmorModal } from "@chia/Components/Items/Armor";
 
 const Router: FC = () => {
   const location = useLocation();
-  const { userId } = useParams();
-  const userData = useReadLocalStorage("userData");
 
   return (
     <PageTransition>

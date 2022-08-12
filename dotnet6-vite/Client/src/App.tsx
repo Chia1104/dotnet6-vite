@@ -17,15 +17,20 @@ import PaperImg from "./assets/paper.png";
 import LoginImg from "./assets/login.png";
 import Logout from "@chia/Components/Icons/Logout";
 import Anonymous from "./assets/anonymous.png";
+import type { LocalUser } from "@chia/util/types";
 
 function App() {
-  const [userData, setUserData] = useLocalStorage("userData", null);
+  const [userData, setUserData] = useLocalStorage(
+    "userData",
+    null as LocalUser | null
+  );
   const dispatch = useAppDispatch();
   const actionSheet = useAppSelector(selectActionSheet);
   const navigate = useNavigate();
 
   const handleLogout = () => {
     setUserData(null);
+    dispatch(activeDrawer());
     navigate("/");
   };
 
@@ -35,17 +40,13 @@ function App() {
         <Avatar
           width="70px"
           height="70px"
-          // @ts-ignore
           src={userData ? getRoleImage(userData.role) : Anonymous}
-          // @ts-ignore
           text={userData?.name || "Anonymous"}
           onClick={() => dispatch(activeDrawer())}
         />
       </div>
       <Drawer
-        // @ts-ignore
         title={userData?.name || "You are not login"}
-        // @ts-ignore
         subtitle={userData?.role || ""}
         visible={actionSheet.drawer.isOpen}
         onClose={() => dispatch(activeDrawer())}
@@ -68,8 +69,7 @@ function App() {
                   height="100px"
                   src={PackageImg}
                   onClick={() => {
-                    // @ts-ignore
-                    navigate(`users/${userData?.userId}`);
+                    navigate(`users/${userData.userId}`);
                     dispatch(activeDrawer());
                   }}
                 />
