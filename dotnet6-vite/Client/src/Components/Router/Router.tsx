@@ -1,4 +1,4 @@
-﻿import { Routes, Route, useLocation, useParams } from "react-router-dom";
+﻿import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Home from "@chia/pages/Home";
 import Example from "@chia/pages/Example";
 import UserListPage from "@chia/pages/User";
@@ -43,6 +43,7 @@ const Router: FC = () => {
           }
         />
         <Route path="*" element={<NotFound />} />
+        <Route path="/doc" element={<Navigate to="/" />} />
       </Routes>
     </PageTransition>
   );

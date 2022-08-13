@@ -82,9 +82,9 @@ const ArmorInfo: FC<IArmorInfo> = (props) => {
       <Capacity value={heaviness} color={heavinessColor} width="100%" />
       {haveMoreButton && (
         <>
-          <div className="mt-5">
-            <ButtonPrimary>MORE</ButtonPrimary>
-          </div>
+          {/*<div className="mt-5">*/}
+          {/*  <ButtonPrimary>MORE</ButtonPrimary>*/}
+          {/*</div>*/}
           {
             // @ts-ignore
             userData.userId === userId && (

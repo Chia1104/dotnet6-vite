@@ -7,7 +7,7 @@ import Shield from "@chia/Components/Shield";
 import Weapon from "@chia/Components/Weapon";
 import Anonymous from "@chia/assets/anonymous.png";
 import Avatar from "@chia/Components/Avatar";
-import UserStateCard from "@chia/Components/UserStateCard";
+import StateCard from "@chia/Components/StateCard";
 import { useReadLocalStorage } from "usehooks-ts";
 import { useParams } from "react-router-dom";
 import ButtonPrimary from "@chia/Components/ButtonPrimary";
@@ -70,10 +70,10 @@ const UserDetail: FC<Props> = (props) => {
           </div>
         </div>
         <div className="w-full md:w-[500px] lg:w-[800px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-10">
-          <UserStateCard title={"LEVEL"} value={level} />
-          <UserStateCard title={"ATTACK"} value={attack} />
-          <UserStateCard title={"DEFENSE"} value={defense} />
-          <UserStateCard title={"HEAVINESS"} value={heaviness} />
+          <StateCard title={"LEVEL"} value={level} />
+          <StateCard title={"ATTACK"} value={attack} />
+          <StateCard title={"DEFENSE"} value={defense} />
+          <StateCard title={"HEAVINESS"} value={heaviness} />
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pt-10">

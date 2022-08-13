@@ -87,9 +87,9 @@ const WeaponInfo: FC<IWeaponInfo> = (props) => {
       <Capacity value={attack} color={attackColor} width="100%" />
       {haveMoreButton && (
         <>
-          <div className="mt-5">
-            <ButtonPrimary>MORE</ButtonPrimary>
-          </div>
+          {/*<div className="mt-5">*/}
+          {/*  <ButtonPrimary>MORE</ButtonPrimary>*/}
+          {/*</div>*/}
           {
             // @ts-ignore
             userData.userId === userId && (
