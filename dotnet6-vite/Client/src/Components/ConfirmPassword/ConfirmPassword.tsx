@@ -5,8 +5,8 @@
   useState,
   type ChangeEvent,
   type Ref,
+  type RefObject,
 } from "react";
-import { emailSchema } from "@chia/util/types";
 import cx from "classnames";
 
 interface Props {
@@ -14,18 +14,26 @@ interface Props {
   error: string;
   placeholder?: string;
   ref?: Ref<HTMLInputElement>;
+  refTarget: RefObject<HTMLInputElement>;
   titleClassName?: string | undefined;
   inputClassName?: string | undefined;
 }
 
-const EmailInput: FC<Props> = forwardRef((props, ref) => {
-  const { title, error, placeholder, titleClassName, inputClassName } = props;
+const ConfirmPassword: FC<Props> = forwardRef((props, ref) => {
+  const {
+    title,
+    error,
+    placeholder,
+    titleClassName,
+    inputClassName,
+    refTarget,
+  } = props;
   const [isError, setIsError] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
   const id = useId();
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    const isValid = emailSchema.safeParse(value).success;
+    const isValid = refTarget.current?.value === value;
     setIsError(!isValid);
   };
 
@@ -33,16 +41,16 @@ const EmailInput: FC<Props> = forwardRef((props, ref) => {
     <>
       <label
         className={cx("text-2xl font-bold", titleClassName)}
-        htmlFor={`${id}-email-input`}>
+        htmlFor={`${id}-password-input`}>
         {title}
       </label>
       <input
         ref={ref}
-        id={`${id}-email-input`}
-        type="email"
+        id={`${id}-password-input`}
+        type="password"
+        required
         placeholder={placeholder}
         onChange={onChange}
-        required
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         className={cx(
@@ -57,4 +65,4 @@ const EmailInput: FC<Props> = forwardRef((props, ref) => {
   );
 });
 
-export default EmailInput;
+export default ConfirmPassword;

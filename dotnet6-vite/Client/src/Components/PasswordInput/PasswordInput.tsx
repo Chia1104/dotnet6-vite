@@ -42,6 +42,7 @@ const PasswordInput: FC<Props> = forwardRef((props, ref) => {
         type="password"
         placeholder={placeholder}
         onChange={onChange}
+        required
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         className={cx(

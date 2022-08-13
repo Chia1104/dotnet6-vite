@@ -5,27 +5,42 @@
   useState,
   type ChangeEvent,
   type Ref,
+  DetailedHTMLProps,
+  InputHTMLAttributes,
 } from "react";
-import { emailSchema } from "@chia/util/types";
+import { ZodType } from "zod";
 import cx from "classnames";
 
-interface Props {
+interface Props
+  extends DetailedHTMLProps<
+    InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > {
   title: string;
   error: string;
   placeholder?: string;
   ref?: Ref<HTMLInputElement>;
   titleClassName?: string | undefined;
   inputClassName?: string | undefined;
+  schema: ZodType<any>;
 }
 
-const EmailInput: FC<Props> = forwardRef((props, ref) => {
-  const { title, error, placeholder, titleClassName, inputClassName } = props;
+const Input: FC<Props> = forwardRef((props, ref) => {
+  const {
+    title,
+    error,
+    placeholder,
+    titleClassName,
+    inputClassName,
+    schema,
+    ...rest
+  } = props;
   const [isError, setIsError] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
   const id = useId();
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    const isValid = emailSchema.safeParse(value).success;
+    const isValid = schema.safeParse(value).success;
     setIsError(!isValid);
   };
 
@@ -39,7 +54,6 @@ const EmailInput: FC<Props> = forwardRef((props, ref) => {
       <input
         ref={ref}
         id={`${id}-email-input`}
-        type="email"
         placeholder={placeholder}
         onChange={onChange}
         required
@@ -51,10 +65,11 @@ const EmailInput: FC<Props> = forwardRef((props, ref) => {
           isFocus && !isError && "border-primary",
           inputClassName
         )}
+        {...rest}
       />
       {isError && <div className="text-danger">{error}</div>}
     </>
   );
 });
 
-export default EmailInput;
+export default Input;

@@ -2,19 +2,19 @@
 
 This is a practice project for [.Net Core](https://dotnet.microsoft.com/) and [React](https://reactjs.org/).
 
-🚧 Work in progress 🚧
+A simple game that player can equip items and see their stats.
 
 ## Language and Tools
 
 <div align="center">
-  <img src="https://skillicons.dev/icons?i=ts,cs,vite,react,dotnet,postgres" />
+  <img src="https://skillicons.dev/icons?i=ts,cs,vite,react,dotnet,postgres,docker" />
 </div>
 
 ## Features
 
  - [x] React with Vite
  - [x] Authentication([JWT](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer/7.0.0-preview.6.22330.3))
- - [ ] Dockerized
+ - [x] Dockerized
 
 ## Get Started
 
@@ -63,4 +63,10 @@ Run the app.
 ```bash
 $ cd dotnet6-vite
 $ dotnet run watch
+```
+
+Build the docker image in the root of the project folder
+
+```bash
+$ docker build -f dotnet6-vite\Dockerfile -t app:test .
 ```

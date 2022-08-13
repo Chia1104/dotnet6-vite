@@ -23,7 +23,7 @@ const Button: FC<Props> = (props) => {
         className={cx(
           "c-button-secondary transform text-base",
           props.disabled
-            ? "text-gray-400"
+            ? "text-gray-400 cursor-not-allowed"
             : "group-hover:-translate-x-1 group-hover:-translate-y-1"
         )}>
         {text}

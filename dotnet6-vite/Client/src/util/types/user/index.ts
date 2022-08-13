@@ -1,8 +1,16 @@
-﻿import { Email, UUID, Armor, Headgear, Shield, Weapon } from "@chia/util/types";
+﻿import {
+  Email,
+  UUID,
+  Armor,
+  Headgear,
+  Shield,
+  Weapon,
+  Name,
+} from "@chia/util/types";
 
 export type User = {
   userId: UUID;
-  name: string;
+  name: Name;
   email: Email;
   createdAt: string;
   role: number;

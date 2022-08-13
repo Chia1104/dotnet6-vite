@@ -9,6 +9,7 @@ import RequireAuth from "@chia/Components/RequireAuth";
 import IfLogined from "@chia/Components/IfLogined";
 import { type FC } from "react";
 import UserDetailPage from "@chia/pages/User/UserDetail";
+import RegisterPage from "@chia/pages/Register";
 
 const Router: FC = () => {
   const location = useLocation();
@@ -23,6 +24,14 @@ const Router: FC = () => {
           element={
             <IfLogined>
               <LoginPage />
+            </IfLogined>
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <IfLogined>
+              <RegisterPage />
             </IfLogined>
           }
         />

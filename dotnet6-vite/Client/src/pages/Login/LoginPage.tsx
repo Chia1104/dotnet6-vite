@@ -1,12 +1,19 @@
-﻿import { type FC, useId, type FormEvent, useRef, useEffect } from "react";
+﻿import {
+  type FC,
+  useId,
+  type FormEvent,
+  useRef,
+  useEffect,
+  useState,
+} from "react";
 import { emailSchema, passwordSchema } from "@chia/util/types";
-import { useToasts, Page } from "@geist-ui/core";
+import { useToasts } from "@geist-ui/core";
 import { selectAuthData, selectLoginState } from "@chia/store/modules/Auth";
 import { loginAsync } from "@chia/store/modules/Auth/actions";
 import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 import { useAppSelector } from "@chia/hooks/useAppSelector";
 import { useLocalStorage } from "usehooks-ts";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import EmailInput from "@chia/Components/EmailInput";
 import PasswordInput from "@chia/Components/PasswordInput";
 import Button from "@chia/Components/Button";
@@ -28,6 +35,18 @@ const LoginPage: FC = () => {
     null as LocalUser | null
   );
   const navigate = useNavigate();
+  const [disable, setDisable] = useState(true);
+
+  const onChange = () => {
+    const email = emailRef.current?.value;
+    const password = passwordRef.current?.value;
+    setDisable(
+      !(
+        emailSchema.safeParse(email).success &&
+        passwordSchema.safeParse(password).success
+      )
+    );
+  };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -63,15 +82,15 @@ const LoginPage: FC = () => {
     }
     if (loginState.loading === "failed")
       setToast({
-        text: "Login failed",
+        text: loginState.error || "Login failed",
         type: "warning",
       });
   }, [loginState.loading]);
 
   return (
     <div className="c-main c-container">
-      <div className="w-full md:w-[700px] rounded-lg py-10 px-20 c-bg-secondary shadow-xl overflow-hidden">
-        <button onClick={() => navigate(-1)} className="flex group">
+      <div className="w-full md:w-[700px] rounded-lg py-10 px-20 c-bg-secondary shadow-xl overflow-hidden flex flex-col">
+        <button onClick={() => navigate("/")} className="flex group">
           <Back />
           <p className="group-hover:translate-x-2 transition ease-in-out c-text-bg-primary-half">
             Go back
@@ -81,6 +100,7 @@ const LoginPage: FC = () => {
         <form
           className="w-full flex flex-col"
           id={`${id}-form`}
+          onChange={onChange}
           onSubmit={handleSubmit}>
           {loginState.loading === "pending" && <Spinner />}
           <EmailInput
@@ -96,9 +116,12 @@ const LoginPage: FC = () => {
             ref={passwordRef}
           />
           <div className="self-center my-4">
-            <Button text="Login" type="submit" />
+            <Button text="Login" type="submit" disabled={disable} />
           </div>
         </form>
+        <Link to={"/register"} className="text-center my-4 c-link self-center">
+          Don't have an account? Register here
+        </Link>
       </div>
     </div>
   );
