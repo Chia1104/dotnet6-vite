@@ -22,6 +22,16 @@ const EditHeadgearList: FC<Props> = (props) => {
 
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="self-center text-center">
+        <ButtonPrimary
+          onClick={() => {
+            // @ts-ignore
+            dispatch(deleteUserHeadgearAsync({ token: userData.accessToken }));
+            dispatch(activeEditHeadgearModal());
+          }}>
+          Remove
+        </ButtonPrimary>
+      </div>
       {headgears.map((headgear) => (
         <div key={headgear.headgearId} className="flex flex-col w-full">
           <h2 className="c-subtitle m-2 c-text-bg-primary-half self-center">
@@ -45,16 +55,6 @@ const EditHeadgearList: FC<Props> = (props) => {
           </div>
         </div>
       ))}
-      <div className="self-center text-center">
-        <ButtonPrimary
-          onClick={() => {
-            // @ts-ignore
-            dispatch(deleteUserHeadgearAsync({ token: userData.accessToken }));
-            dispatch(activeEditHeadgearModal());
-          }}>
-          Remove
-        </ButtonPrimary>
-      </div>
     </div>
   );
 };

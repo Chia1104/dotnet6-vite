@@ -1,62 +1,62 @@
 ﻿import { type FC } from "react";
-import { WeaponItem } from "./Weapon";
-import type { Weapon } from "@chia/util/types";
+import { ArmorItem } from "./Armor";
+import type { Armor } from "@chia/util/types";
 import ButtonPrimary from "@chia/Components/ButtonPrimary";
 import { useReadLocalStorage } from "usehooks-ts";
 import type { LocalUser } from "@chia/util/types";
 import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 import {
-  postUserWeaponAsync,
-  deleteUserWeaponAsync,
+  postUserArmorAsync,
+  deleteUserArmorAsync,
 } from "@chia/store/modules/User/actions";
-import { activeEditWeaponModal } from "@chia/store/modules/ActionSheet";
+import { activeEditArmorModal } from "@chia/store/modules/ActionSheet";
 
 interface Props {
-  weapons: Weapon[];
+  armors: Armor[];
 }
 
-const EditWeaponList: FC<Props> = (props) => {
-  const { weapons } = props;
+const EditArmorList: FC<Props> = (props) => {
+  const { armors } = props;
   const userData = useReadLocalStorage<LocalUser>("userData");
   const dispatch = useAppDispatch();
 
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-10">
-      {weapons.map((weapon) => (
-        <div key={weapon.weaponId} className="flex flex-col w-full">
+      <div className="self-center text-center">
+        <ButtonPrimary
+          onClick={() => {
+            // @ts-ignore
+            dispatch(deleteUserArmorAsync({ token: userData.accessToken }));
+            dispatch(activeEditArmorModal());
+          }}>
+          Remove
+        </ButtonPrimary>
+      </div>
+      {armors.map((armor) => (
+        <div key={armor.armorId} className="flex flex-col w-full">
           <h2 className="c-subtitle m-2 c-text-bg-primary-half self-center">
-            {weapon.name}
+            {armor.name}
           </h2>
-          <WeaponItem weapon={weapon} />
+          <ArmorItem armor={armor} />
           <div className="self-center mt-5">
             <ButtonPrimary
               onClick={() => {
                 dispatch(
-                  postUserWeaponAsync({
+                  postUserArmorAsync({
                     // @ts-ignore
                     token: userData.accessToken,
-                    weaponId: weapon.weaponId,
+                    armorId: armor.armorId,
                   })
                 );
-                dispatch(activeEditWeaponModal());
+                dispatch(activeEditArmorModal());
               }}>
               Equip
             </ButtonPrimary>
           </div>
         </div>
       ))}
-      <div className="self-center text-center">
-        <ButtonPrimary
-          onClick={() => {
-            // @ts-ignore
-            dispatch(deleteUserWeaponAsync({ token: userData.accessToken }));
-            dispatch(activeEditWeaponModal());
-          }}>
-          Remove
-        </ButtonPrimary>
-      </div>
     </div>
   );
 };
 
-export default EditWeaponList;
+export default EditArmorList;

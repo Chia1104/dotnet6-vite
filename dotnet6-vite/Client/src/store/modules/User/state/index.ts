@@ -17,6 +17,7 @@ export interface IUserState {
       data?: User | null;
     };
   };
+  updateLoading: "idle" | "pending" | "succeeded" | "failed";
 }
 
 export const userInitState: IUserState = {
@@ -34,4 +35,5 @@ export const userInitState: IUserState = {
       message: "",
     },
   },
+  updateLoading: "idle",
 };

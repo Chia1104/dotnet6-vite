@@ -1,4 +1,4 @@
-﻿import { IActionSheetState } from "@chia/store/modules/ActionSheet/state";
+﻿import { type IActionSheetState } from "@chia/store/modules/ActionSheet/state";
 
 export const actionSheetReducer = {
   activeDrawer: (state: IActionSheetState) => {

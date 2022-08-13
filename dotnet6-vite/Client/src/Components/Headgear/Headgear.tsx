@@ -1,4 +1,4 @@
-﻿import { type FC, useRef } from "react";
+﻿import { type FC, useRef, memo } from "react";
 import { type Headgear } from "@chia/util/types";
 import { Capacity, Image } from "@geist-ui/core";
 import {
@@ -137,4 +137,6 @@ export const HeadgearItem: FC<IHeadgearCard> = (props) => {
   );
 };
 
-export default HeadgearCard;
+export default memo(HeadgearCard, (prevProps, nextProps) => {
+  return prevProps.headgear?.image === nextProps.headgear?.image;
+});

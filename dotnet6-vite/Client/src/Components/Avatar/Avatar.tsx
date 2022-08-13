@@ -1,4 +1,4 @@
-﻿import { type FC } from "react";
+﻿import { type FC, memo } from "react";
 import { Avatar as GeistAvatar, Tooltip } from "@geist-ui/core";
 
 interface Props {
@@ -28,4 +28,6 @@ const Avatar: FC<Props> = (props) => {
   );
 };
 
-export default Avatar;
+export default memo(Avatar, (prevProps, nextProps) => {
+  return prevProps.src === nextProps.src;
+});

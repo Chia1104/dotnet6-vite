@@ -1,5 +1,9 @@
 ﻿import { type FC, useEffect } from "react";
-import { selectUser } from "@chia/store/modules/User";
+import {
+  selectUser,
+  selectUpdateLoading,
+  clearUserDetails,
+} from "@chia/store/modules/User";
 import { getUserAsync } from "@chia/store/modules/User/actions";
 import { useAppSelector } from "@chia/hooks/useAppSelector";
 import { useAppDispatch } from "@chia/hooks/useAppDispatch";
@@ -9,13 +13,15 @@ import UserDetail from "@chia/Components/UserDetail";
 import { Loading } from "@geist-ui/core";
 import GameStory from "@chia/Components/Animation/GameStory/GameStory";
 import type { LocalUser } from "@chia/util/types";
-import { EditArmorModal } from "@chia/Components/Items/Armor";
-import { EditHeadgearModal } from "@chia/Components/Items/Headgear";
-import { EditShieldModal } from "@chia/Components/Items/Shield";
-import { EditWeaponModal } from "@chia/Components/Items/Weapon";
+import { EditArmorModal } from "@chia/Components/Armor";
+import { EditHeadgearModal } from "@chia/Components/Headgear";
+import { EditShieldModal } from "@chia/Components/Shield";
+import { EditWeaponModal } from "@chia/Components/Weapon";
+import Spinner from "@chia/Components/Spinner";
 
 const UserDetailPage: FC = () => {
   const user = useAppSelector(selectUser);
+  const updateLoading = useAppSelector(selectUpdateLoading);
   const dispatch = useAppDispatch();
   const userData = useReadLocalStorage<LocalUser>("userData");
   const { userId } = useParams();
@@ -23,6 +29,10 @@ const UserDetailPage: FC = () => {
   useEffect(() => {
     // @ts-ignore
     dispatch(getUserAsync({ token: userData.accessToken, id: userId }));
+
+    return () => {
+      dispatch(clearUserDetails());
+    };
   }, []);
 
   return (
@@ -30,10 +40,12 @@ const UserDetailPage: FC = () => {
       <div className="w-full flex justify-center items-end fixed bottom-0 -z-10 brightness-50">
         <GameStory />
       </div>
-      {
+      {user.loading === "succeeded" && (
         // @ts-ignore
-        user.loading === "succeeded" && <UserDetail user={user.data.data} />
-      }
+        <UserDetail user={user.data.data}>
+          {updateLoading === "pending" && <Spinner />}
+        </UserDetail>
+      )}
       {user.loading === "pending" && <Loading>Loading</Loading>}
       {user.loading === "failed" && (
         <Navigate to={"/404"} state={{ from: location }} />

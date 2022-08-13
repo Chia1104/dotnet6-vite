@@ -78,7 +78,7 @@ function App() {
                   height="100px"
                   src={PaperImg}
                   onClick={() => {
-                    navigate("/dist");
+                    navigate("/doc");
                     dispatch(activeDrawer());
                   }}
                 />

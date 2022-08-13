@@ -1,5 +1,5 @@
-﻿import { type FC, useRef } from "react";
-import { type Weapon } from "@chia/util/types";
+﻿import { type FC, useRef, memo } from "react";
+import { type Armor } from "@chia/util/types";
 import { Capacity, Image } from "@geist-ui/core";
 import {
   getLevelImage,
@@ -10,23 +10,22 @@ import { useHover, useReadLocalStorage } from "usehooks-ts";
 import { motion } from "framer-motion";
 import ButtonPrimary from "@chia/Components/ButtonPrimary";
 import { useParams } from "react-router-dom";
-import type { LocalUser } from "@chia/util/types";
-import { activeEditWeaponModal } from "@chia/store/modules/ActionSheet";
+import { activeEditArmorModal } from "@chia/store/modules/ActionSheet";
 import { useAppDispatch } from "@chia/hooks/useAppDispatch";
+import type { LocalUser } from "@chia/util/types";
 
-interface IWeaponCard {
-  weapon?: Weapon;
+interface IArmorCard {
+  armor?: Armor;
 }
-interface IWeaponInfo {
+interface IArmorInfo {
   isShow: boolean;
-  attack: number;
-  heaviness: number;
   defense: number;
+  heaviness: number;
   haveMoreButton?: boolean;
 }
 
-const WeaponCard: FC<IWeaponCard> = (props) => {
-  const { weapon } = props;
+const ArmorCard: FC<IArmorCard> = (props) => {
+  const { armor } = props;
   const r = useRef<HTMLDivElement>(null);
   const isHover = useHover(r);
 
@@ -35,24 +34,23 @@ const WeaponCard: FC<IWeaponCard> = (props) => {
       ref={r}
       className="w-full h-[270px] c-bg-gradient-yellow-to-pink rounded-2xl p-1">
       <div className="w-full h-full c-bg-secondary rounded-2xl p-1 flex justify-center items-center overflow-hidden relative">
-        <WeaponInfo
+        <ArmorInfo
           isShow={isHover}
-          attack={weapon?.attack || 0}
-          heaviness={weapon?.heaviness || 0}
-          defense={weapon?.defense || 0}
+          defense={armor?.defense || 0}
+          heaviness={armor?.heaviness || 0}
         />
         <Image
           width="150px"
           height="150px"
-          src={weapon?.image || ""}
-          alt={weapon?.name || ""}
+          src={armor?.image || ""}
+          alt={armor?.name || ""}
         />
         <div className="absolute bottom-0 right-0 mr-5 mb-5">
           <Image
             width="30px"
             height="30px"
-            src={getLevelImage(weapon?.level)}
-            alt={weapon?.level?.toString() || ""}
+            src={getLevelImage(armor?.level)}
+            alt={armor?.level?.toString() || ""}
           />
         </div>
       </div>
@@ -60,15 +58,14 @@ const WeaponCard: FC<IWeaponCard> = (props) => {
   );
 };
 
-const WeaponInfo: FC<IWeaponInfo> = (props) => {
-  const { isShow, attack, heaviness, defense, haveMoreButton = true } = props;
+const ArmorInfo: FC<IArmorInfo> = (props) => {
+  const { isShow, defense, heaviness, haveMoreButton = true } = props;
   const v = {
     open: { opacity: 1, y: 0 },
     closed: { opacity: 0, y: -20 },
   };
-  const attackColor = getItemColor(attack);
-  const heavinessColor = getHeavinessColor(heaviness);
   const defenseColor = getItemColor(defense);
+  const heavinessColor = getHeavinessColor(heaviness);
   const userData = useReadLocalStorage<LocalUser>("userData");
   const { userId } = useParams();
   const dispatch = useAppDispatch();
@@ -83,8 +80,6 @@ const WeaponInfo: FC<IWeaponInfo> = (props) => {
       <Capacity value={defense} color={defenseColor} width="100%" />
       <p className="text-base self-start mb-1">Heaviness</p>
       <Capacity value={heaviness} color={heavinessColor} width="100%" />
-      <p className="text-base self-start mb-1">Attack</p>
-      <Capacity value={attack} color={attackColor} width="100%" />
       {haveMoreButton && (
         <>
           <div className="mt-5">
@@ -94,8 +89,7 @@ const WeaponInfo: FC<IWeaponInfo> = (props) => {
             // @ts-ignore
             userData.userId === userId && (
               <div className="mt-5">
-                <ButtonPrimary
-                  onClick={() => dispatch(activeEditWeaponModal())}>
+                <ButtonPrimary onClick={() => dispatch(activeEditArmorModal())}>
                   EDIT
                 </ButtonPrimary>
               </div>
@@ -107,8 +101,8 @@ const WeaponInfo: FC<IWeaponInfo> = (props) => {
   );
 };
 
-export const WeaponItem: FC<IWeaponCard> = (props) => {
-  const { weapon } = props;
+export const ArmorItem: FC<IArmorCard> = (props) => {
+  const { armor } = props;
   const r = useRef<HTMLDivElement>(null);
   const isHover = useHover(r);
 
@@ -117,25 +111,24 @@ export const WeaponItem: FC<IWeaponCard> = (props) => {
       ref={r}
       className="w-full h-[270px] c-bg-gradient-yellow-to-pink rounded-2xl p-1">
       <div className="w-full h-full c-bg-secondary rounded-2xl p-1 flex justify-center items-center overflow-hidden relative">
-        <WeaponInfo
+        <ArmorInfo
           isShow={isHover}
-          attack={weapon?.attack || 0}
-          heaviness={weapon?.heaviness || 0}
-          defense={weapon?.defense || 0}
+          defense={armor?.defense || 0}
+          heaviness={armor?.heaviness || 0}
           haveMoreButton={false}
         />
         <Image
           width="150px"
           height="150px"
-          src={weapon?.image || ""}
-          alt={weapon?.name || ""}
+          src={armor?.image || ""}
+          alt={armor?.name || ""}
         />
         <div className="absolute bottom-0 right-0 mr-5 mb-5">
           <Image
             width="30px"
             height="30px"
-            src={getLevelImage(weapon?.level)}
-            alt={weapon?.level?.toString() || ""}
+            src={getLevelImage(armor?.level)}
+            alt={armor?.level?.toString() || ""}
           />
         </div>
       </div>
@@ -143,4 +136,6 @@ export const WeaponItem: FC<IWeaponCard> = (props) => {
   );
 };
 
-export default WeaponCard;
+export default memo(ArmorCard, (prevProps, nextProps) => {
+  return prevProps.armor?.image === nextProps.armor?.image;
+});

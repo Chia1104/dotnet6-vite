@@ -9,7 +9,6 @@ import RequireAuth from "@chia/Components/RequireAuth";
 import IfLogined from "@chia/Components/IfLogined";
 import { type FC } from "react";
 import UserDetailPage from "@chia/pages/User/UserDetail";
-import { EditArmorModal } from "@chia/Components/Items/Armor";
 
 const Router: FC = () => {
   const location = useLocation();

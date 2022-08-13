@@ -22,6 +22,16 @@ const EditShieldList: FC<Props> = (props) => {
 
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="self-center text-center">
+        <ButtonPrimary
+          onClick={() => {
+            // @ts-ignore
+            dispatch(deleteUserShieldAsync({ token: userData.accessToken }));
+            dispatch(activeEditShieldModal());
+          }}>
+          Remove
+        </ButtonPrimary>
+      </div>
       {shields.map((shield) => (
         <div key={shield.shieldId} className="flex flex-col w-full">
           <h2 className="c-subtitle m-2 c-text-bg-primary-half self-center">
@@ -45,16 +55,6 @@ const EditShieldList: FC<Props> = (props) => {
           </div>
         </div>
       ))}
-      <div className="self-center text-center">
-        <ButtonPrimary
-          onClick={() => {
-            // @ts-ignore
-            dispatch(deleteUserShieldAsync({ token: userData.accessToken }));
-            dispatch(activeEditShieldModal());
-          }}>
-          Remove
-        </ButtonPrimary>
-      </div>
     </div>
   );
 };

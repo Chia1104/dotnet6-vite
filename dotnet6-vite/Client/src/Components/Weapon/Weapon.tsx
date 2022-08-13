@@ -1,5 +1,5 @@
-﻿import { type FC, useRef } from "react";
-import { type Shield } from "@chia/util/types";
+﻿import { type FC, useRef, memo } from "react";
+import { type Weapon } from "@chia/util/types";
 import { Capacity, Image } from "@geist-ui/core";
 import {
   getLevelImage,
@@ -11,22 +11,22 @@ import { motion } from "framer-motion";
 import ButtonPrimary from "@chia/Components/ButtonPrimary";
 import { useParams } from "react-router-dom";
 import type { LocalUser } from "@chia/util/types";
-import { activeEditShieldModal } from "@chia/store/modules/ActionSheet";
+import { activeEditWeaponModal } from "@chia/store/modules/ActionSheet";
 import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 
-interface IShieldCard {
-  shield?: Shield;
+interface IWeaponCard {
+  weapon?: Weapon;
 }
-interface IShieldInfo {
+interface IWeaponInfo {
   isShow: boolean;
-  defense: number;
-  heaviness: number;
   attack: number;
+  heaviness: number;
+  defense: number;
   haveMoreButton?: boolean;
 }
 
-const ShieldCard: FC<IShieldCard> = (props) => {
-  const { shield } = props;
+const WeaponCard: FC<IWeaponCard> = (props) => {
+  const { weapon } = props;
   const r = useRef<HTMLDivElement>(null);
   const isHover = useHover(r);
 
@@ -35,24 +35,24 @@ const ShieldCard: FC<IShieldCard> = (props) => {
       ref={r}
       className="w-full h-[270px] c-bg-gradient-yellow-to-pink rounded-2xl p-1">
       <div className="w-full h-full c-bg-secondary rounded-2xl p-1 flex justify-center items-center overflow-hidden relative">
-        <ShieldInfo
+        <WeaponInfo
           isShow={isHover}
-          defense={shield?.defense || 0}
-          heaviness={shield?.heaviness || 0}
-          attack={shield?.attack || 0}
+          attack={weapon?.attack || 0}
+          heaviness={weapon?.heaviness || 0}
+          defense={weapon?.defense || 0}
         />
         <Image
           width="150px"
           height="150px"
-          src={shield?.image || ""}
-          alt={shield?.name || ""}
+          src={weapon?.image || ""}
+          alt={weapon?.name || ""}
         />
         <div className="absolute bottom-0 right-0 mr-5 mb-5">
           <Image
             width="30px"
             height="30px"
-            src={getLevelImage(shield?.level)}
-            alt={shield?.level?.toString() || ""}
+            src={getLevelImage(weapon?.level)}
+            alt={weapon?.level?.toString() || ""}
           />
         </div>
       </div>
@@ -60,15 +60,15 @@ const ShieldCard: FC<IShieldCard> = (props) => {
   );
 };
 
-const ShieldInfo: FC<IShieldInfo> = (props) => {
-  const { isShow, defense, heaviness, attack, haveMoreButton = true } = props;
+const WeaponInfo: FC<IWeaponInfo> = (props) => {
+  const { isShow, attack, heaviness, defense, haveMoreButton = true } = props;
   const v = {
     open: { opacity: 1, y: 0 },
     closed: { opacity: 0, y: -20 },
   };
-  const defenseColor = getItemColor(defense);
-  const heavinessColor = getHeavinessColor(heaviness);
   const attackColor = getItemColor(attack);
+  const heavinessColor = getHeavinessColor(heaviness);
+  const defenseColor = getItemColor(defense);
   const userData = useReadLocalStorage<LocalUser>("userData");
   const { userId } = useParams();
   const dispatch = useAppDispatch();
@@ -95,7 +95,7 @@ const ShieldInfo: FC<IShieldInfo> = (props) => {
             userData.userId === userId && (
               <div className="mt-5">
                 <ButtonPrimary
-                  onClick={() => dispatch(activeEditShieldModal())}>
+                  onClick={() => dispatch(activeEditWeaponModal())}>
                   EDIT
                 </ButtonPrimary>
               </div>
@@ -107,8 +107,8 @@ const ShieldInfo: FC<IShieldInfo> = (props) => {
   );
 };
 
-export const ShieldItem: FC<IShieldCard> = (props) => {
-  const { shield } = props;
+export const WeaponItem: FC<IWeaponCard> = (props) => {
+  const { weapon } = props;
   const r = useRef<HTMLDivElement>(null);
   const isHover = useHover(r);
 
@@ -117,25 +117,25 @@ export const ShieldItem: FC<IShieldCard> = (props) => {
       ref={r}
       className="w-full h-[270px] c-bg-gradient-yellow-to-pink rounded-2xl p-1">
       <div className="w-full h-full c-bg-secondary rounded-2xl p-1 flex justify-center items-center overflow-hidden relative">
-        <ShieldInfo
+        <WeaponInfo
           isShow={isHover}
-          defense={shield?.defense || 0}
-          heaviness={shield?.heaviness || 0}
-          attack={shield?.attack || 0}
+          attack={weapon?.attack || 0}
+          heaviness={weapon?.heaviness || 0}
+          defense={weapon?.defense || 0}
           haveMoreButton={false}
         />
         <Image
           width="150px"
           height="150px"
-          src={shield?.image || ""}
-          alt={shield?.name || ""}
+          src={weapon?.image || ""}
+          alt={weapon?.name || ""}
         />
         <div className="absolute bottom-0 right-0 mr-5 mb-5">
           <Image
             width="30px"
             height="30px"
-            src={getLevelImage(shield?.level)}
-            alt={shield?.level?.toString() || ""}
+            src={getLevelImage(weapon?.level)}
+            alt={weapon?.level?.toString() || ""}
           />
         </div>
       </div>
@@ -143,4 +143,6 @@ export const ShieldItem: FC<IShieldCard> = (props) => {
   );
 };
 
-export default ShieldCard;
+export default memo(WeaponCard, (prevProps, nextProps) => {
+  return prevProps.weapon?.image === nextProps.weapon?.image;
+});

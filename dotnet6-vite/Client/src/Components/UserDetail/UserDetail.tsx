@@ -1,10 +1,10 @@
-﻿import { type FC } from "react";
+﻿import { type FC, type ReactNode } from "react";
 import { type User } from "@chia/util/types";
 import { getRoleImage } from "@chia/util/services";
-import Armor from "@chia/Components/Items/Armor";
-import Headgear from "@chia/Components/Items/Headgear";
-import Shield from "@chia/Components/Items/Shield";
-import Weapon from "@chia/Components/Items/Weapon";
+import Armor from "@chia/Components/Armor";
+import Headgear from "@chia/Components/Headgear";
+import Shield from "@chia/Components/Shield";
+import Weapon from "@chia/Components/Weapon";
 import Anonymous from "@chia/assets/anonymous.png";
 import Avatar from "@chia/Components/Avatar";
 import UserStateCard from "@chia/Components/UserStateCard";
@@ -22,10 +22,11 @@ import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 
 interface Props {
   user: User;
+  children?: ReactNode;
 }
 
 const UserDetail: FC<Props> = (props) => {
-  const { user } = props;
+  const { user, children } = props;
   const roleImage = getRoleImage(user.role);
   const armorLevel = user.armor?.level || 0;
   const weaponLevel = user.weapon?.level || 0;
@@ -158,6 +159,7 @@ const UserDetail: FC<Props> = (props) => {
           )
         )}
       </div>
+      {children}
     </div>
   );
 };
