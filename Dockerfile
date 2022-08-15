@@ -11,7 +11,8 @@ RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
     && rm -rf /var/lib/apt/lists/* 
 
 WORKDIR /src
-COPY ["dotnet6-vite/dotnet6-vite.csproj", "dotnet6-vite/"]
+COPY dotnet6-vite.sln .
+COPY dotnet6-vite/dotnet6-vite.csproj dotnet6-vite/
 RUN dotnet restore "dotnet6-vite/dotnet6-vite.csproj"
 COPY . .
 WORKDIR "/src/dotnet6-vite"
