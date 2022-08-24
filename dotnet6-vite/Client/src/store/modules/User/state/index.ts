@@ -1,4 +1,4 @@
-﻿import type { User } from "@chia/util/types";
+﻿import type { User } from "@chia/shared/types";
 
 export interface IUserState {
   allUsers: {

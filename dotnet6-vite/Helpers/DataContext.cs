@@ -5,16 +5,9 @@ using dotnet6_vite.Entities;
 
 public class DataContext : DbContext
 {
-    protected readonly IConfiguration Configuration;
-
-    public DataContext(IConfiguration configuration)
-    {
-        Configuration = configuration;
-    }
-
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        options.UseNpgsql(Configuration.GetConnectionString("WebApiDatabase"));
+        options.UseNpgsql(Environment.GetEnvironmentVariable("DB_URL"));
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

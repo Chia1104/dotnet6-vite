@@ -6,12 +6,8 @@
   useEffect,
   useState,
 } from "react";
-import {
-  emailSchema,
-  passwordSchema,
-  nameSchema,
-  type Role,
-} from "@chia/util/types";
+import { type Role, type LocalUser } from "@chia/shared/types";
+import { NameSchema, EmailSchema, PasswordSchema } from "@chia/shared/schemas";
 import { useToasts, Spacer, Radio, Image } from "@geist-ui/core";
 import { selectAuthData, selectRegisterState } from "@chia/store/modules/Auth";
 import { registerAsync } from "@chia/store/modules/Auth/actions";
@@ -19,14 +15,13 @@ import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 import { useAppSelector } from "@chia/hooks/useAppSelector";
 import { useLocalStorage } from "usehooks-ts";
 import { Link, useNavigate } from "react-router-dom";
-import EmailInput from "@chia/Components/EmailInput";
-import PasswordInput from "@chia/Components/PasswordInput";
-import Button from "@chia/Components/Button";
-import Spinner from "@chia/Components/Spinner";
-import Back from "@chia/Components/Icons/Back";
-import type { LocalUser } from "@chia/util/types";
-import ConfirmPassword from "@chia/Components/ConfirmPassword";
-import Input from "@chia/Components/Input";
+import EmailInput from "@chia/components/EmailInput";
+import PasswordInput from "@chia/components/PasswordInput";
+import Button from "@chia/components/Button";
+import Spinner from "@chia/components/Spinner";
+import Back from "@chia/components/Icons/Back";
+import ConfirmPassword from "@chia/components/ConfirmPassword";
+import Input from "@chia/components/Input";
 
 const RegisterPage: FC = () => {
   const { setToast } = useToasts();
@@ -53,10 +48,10 @@ const RegisterPage: FC = () => {
     const name = nameRef.current?.value;
     setDisable(
       !(
-        emailSchema.safeParse(email).success &&
-        passwordSchema.safeParse(password).success &&
+        EmailSchema.safeParse(email).success &&
+        PasswordSchema.safeParse(password).success &&
         password === confirmPassword &&
-        nameSchema.safeParse(name).success
+        NameSchema.safeParse(name).success
       )
     );
   };
@@ -67,14 +62,14 @@ const RegisterPage: FC = () => {
     const password = passwordRef.current?.value;
     const confirmPassword = confirmPasswordRef.current?.value;
     const name = nameRef.current?.value;
-    if (!emailSchema.safeParse(email).success) {
+    if (!EmailSchema.safeParse(email).success) {
       setToast({
         text: "Invalid email format",
         type: "warning",
       });
       return;
     }
-    if (!passwordSchema.safeParse(password).success) {
+    if (!PasswordSchema.safeParse(password).success) {
       setToast({
         text: "Password must be at least 6 characters",
         type: "warning",
@@ -88,7 +83,7 @@ const RegisterPage: FC = () => {
       });
       return;
     }
-    if (!nameSchema.safeParse(name).success) {
+    if (!NameSchema.safeParse(name).success) {
       setToast({
         text: "Name must be between 1 and 10 characters",
         type: "warning",
@@ -144,7 +139,7 @@ const RegisterPage: FC = () => {
           <Input
             title={"Name"}
             error={"Name must be between 1 and 10 characters"}
-            schema={nameSchema}
+            schema={NameSchema}
             type={"text"}
             ref={nameRef}
           />

@@ -1,4 +1,4 @@
-﻿import type { Headgear } from "@chia/util/types";
+﻿import type { Headgear } from "@chia/shared/types";
 
 export interface IHeadgearState {
   allHeadgear: {

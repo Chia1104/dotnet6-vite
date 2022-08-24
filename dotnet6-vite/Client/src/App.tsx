@@ -1,23 +1,23 @@
 import { useNavigate } from "react-router-dom";
-import { GeistProvider, Image } from "@geist-ui/core";
+import { GeistProvider } from "@geist-ui/core";
 import { useLocalStorage } from "usehooks-ts";
-import { getRoleImage } from "@chia/util/services";
-import Avatar from "@chia/Components/Avatar";
+import { getRoleImage } from "@chia/util";
+import Avatar from "@chia/components/Avatar";
 import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 import { useAppSelector } from "@chia/hooks/useAppSelector";
 import {
   activeDrawer,
   selectActionSheet,
 } from "@chia/store/modules/ActionSheet";
-import Drawer from "@chia/Components/Drawer";
-import Router from "@chia/Components/Router";
+import Drawer from "@chia/components/Drawer";
+import Router from "@chia/components/Router";
 import RankImg from "./assets/rank.png";
 import PackageImg from "./assets/package.png";
 import PaperImg from "./assets/paper.png";
 import LoginImg from "./assets/login.png";
-import Logout from "@chia/Components/Icons/Logout";
+import Logout from "@chia/components/Icons/Logout";
 import Anonymous from "./assets/anonymous.png";
-import type { LocalUser } from "@chia/util/types";
+import type { LocalUser } from "@chia/shared/types";
 
 function App() {
   const [userData, setUserData] = useLocalStorage(

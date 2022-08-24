@@ -1,6 +1,7 @@
 ﻿import { createAsyncThunk } from "@reduxjs/toolkit";
 import { login, register } from "@chia/api/auth";
-import type { Email, Password, RegisterDto } from "@chia/util/types";
+import type { Email, Password } from "@chia/shared/types";
+import type { RegisterDto } from "@chia/shared/interface/register.dto";
 
 export const loginAsync = createAsyncThunk(
   "auth/login",

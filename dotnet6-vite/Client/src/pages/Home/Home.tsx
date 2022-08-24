@@ -1,9 +1,9 @@
 ﻿import { type FC, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import GameStorySec from "@chia/Components/Animation/GameStorySec";
-import ButtonPrimary from "@chia/Components/ButtonPrimary";
+import GameStorySec from "@chia/components/Animation/GameStorySec";
+import ButtonPrimary from "@chia/components/ButtonPrimary";
 import { useReadLocalStorage } from "usehooks-ts";
-import type { LocalUser } from "@chia/util/types";
+import type { LocalUser } from "@chia/shared/types";
 
 const Home: FC = () => {
   const navigate = useNavigate();

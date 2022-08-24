@@ -1,4 +1,4 @@
-﻿import type { Weapon } from "@chia/util/types";
+﻿import type { Weapon } from "@chia/shared/types";
 
 export interface IWeaponState {
   allWeapons: {

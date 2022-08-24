@@ -6,7 +6,7 @@
   useEffect,
   useState,
 } from "react";
-import { emailSchema, passwordSchema } from "@chia/util/types";
+import { EmailSchema, PasswordSchema } from "@chia/shared/schemas";
 import { useToasts } from "@geist-ui/core";
 import { selectAuthData, selectLoginState } from "@chia/store/modules/Auth";
 import { loginAsync } from "@chia/store/modules/Auth/actions";
@@ -14,13 +14,13 @@ import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 import { useAppSelector } from "@chia/hooks/useAppSelector";
 import { useLocalStorage } from "usehooks-ts";
 import { Link, useNavigate } from "react-router-dom";
-import EmailInput from "@chia/Components/EmailInput";
-import PasswordInput from "@chia/Components/PasswordInput";
-import Button from "@chia/Components/Button";
-import Spinner from "@chia/Components/Spinner";
-import GameStory from "@chia/Components/Animation/GameStory";
-import Back from "@chia/Components/Icons/Back";
-import type { LocalUser } from "@chia/util/types";
+import EmailInput from "@chia/components/EmailInput";
+import PasswordInput from "@chia/components/PasswordInput";
+import Button from "@chia/components/Button";
+import Spinner from "@chia/components/Spinner";
+import GameStory from "@chia/components/Animation/GameStory";
+import Back from "@chia/components/Icons/Back";
+import type { LocalUser } from "@chia/shared/types";
 
 const LoginPage: FC = () => {
   const { setToast } = useToasts();
@@ -42,8 +42,8 @@ const LoginPage: FC = () => {
     const password = passwordRef.current?.value;
     setDisable(
       !(
-        emailSchema.safeParse(email).success &&
-        passwordSchema.safeParse(password).success
+        EmailSchema.safeParse(email).success &&
+        PasswordSchema.safeParse(password).success
       )
     );
   };
@@ -52,14 +52,14 @@ const LoginPage: FC = () => {
     e.preventDefault();
     const email = emailRef.current?.value;
     const password = passwordRef.current?.value;
-    if (!emailSchema.safeParse(email).success) {
+    if (!EmailSchema.safeParse(email).success) {
       setToast({
         text: "Invalid email format",
         type: "warning",
       });
       return;
     }
-    if (!passwordSchema.safeParse(password).success) {
+    if (!PasswordSchema.safeParse(password).success) {
       setToast({
         text: "Password must be at least 6 characters",
         type: "warning",

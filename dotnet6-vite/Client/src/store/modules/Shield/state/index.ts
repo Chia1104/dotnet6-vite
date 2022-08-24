@@ -1,4 +1,4 @@
-﻿import type { Shield } from "@chia/util/types";
+﻿import type { Shield } from "@chia/shared/types";
 
 export interface IShieldState {
   allShields: {

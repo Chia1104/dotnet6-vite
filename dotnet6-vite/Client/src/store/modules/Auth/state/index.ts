@@ -1,4 +1,4 @@
-﻿import type { Auth } from "@chia/util/types";
+﻿import type { Auth } from "@chia/shared/types";
 
 export interface IAuthState {
   loginState: {

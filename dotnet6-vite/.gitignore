@@ -237,3 +237,5 @@ _Pvt_Extensions
 appsettings.Development.json
 
 Migrations/
+
+.env

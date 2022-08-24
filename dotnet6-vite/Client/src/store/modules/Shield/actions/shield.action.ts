@@ -1,6 +1,6 @@
 ﻿import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getAllShields, getShield } from "@chia/api/item";
-import type { UUID } from "@chia/util/types";
+import type { UUID } from "@chia/shared/types";
 
 export const getAllShieldsAsync = createAsyncThunk(
   "shield/getAllShields",

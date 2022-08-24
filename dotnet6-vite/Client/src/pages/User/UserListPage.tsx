@@ -1,11 +1,11 @@
 ﻿import { type FC, useEffect } from "react";
-import UserList, { UserListLoader } from "@chia/Components/UserList";
+import UserList, { UserListLoader } from "@chia/components/UserList";
 import { selectAllUsers } from "@chia/store/modules/User";
 import { getAllUsersAsync } from "@chia/store/modules/User/actions";
 import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 import { useAppSelector } from "@chia/hooks/useAppSelector";
 import { useReadLocalStorage } from "usehooks-ts";
-import type { LocalUser } from "@chia/util/types";
+import type { LocalUser } from "@chia/shared/types";
 
 const UserListPage: FC = () => {
   const dispatch = useAppDispatch();

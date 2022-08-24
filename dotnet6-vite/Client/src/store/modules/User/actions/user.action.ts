@@ -11,7 +11,7 @@ import {
   postUserShield,
   deleteUserShield,
 } from "@chia/api/user";
-import type { UUID } from "@chia/util/types";
+import type { UUID } from "@chia/shared/types";
 
 export const getAllUsersAsync = createAsyncThunk(
   "user/getAllUsers",

@@ -9,15 +9,15 @@ import { useAppSelector } from "@chia/hooks/useAppSelector";
 import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 import { useReadLocalStorage } from "usehooks-ts";
 import { useParams, Navigate } from "react-router-dom";
-import UserDetail from "@chia/Components/UserDetail";
+import UserDetail from "@chia/components/UserDetail";
 import { Loading } from "@geist-ui/core";
-import GameStory from "@chia/Components/Animation/GameStory/GameStory";
-import type { LocalUser } from "@chia/util/types";
-import { EditArmorModal } from "@chia/Components/Armor";
-import { EditHeadgearModal } from "@chia/Components/Headgear";
-import { EditShieldModal } from "@chia/Components/Shield";
-import { EditWeaponModal } from "@chia/Components/Weapon";
-import Spinner from "@chia/Components/Spinner";
+import GameStory from "@chia/components/Animation/GameStory/GameStory";
+import type { LocalUser } from "@chia/shared/types";
+import { EditArmorModal } from "@chia/components/Armor";
+import { EditHeadgearModal } from "@chia/components/Headgear";
+import { EditShieldModal } from "@chia/components/Shield";
+import { EditWeaponModal } from "@chia/components/Weapon";
+import Spinner from "@chia/components/Spinner";
 
 const UserDetailPage: FC = () => {
   const user = useAppSelector(selectUser);

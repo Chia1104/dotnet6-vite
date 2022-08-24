@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using dotnet6_vite.Services;
@@ -9,12 +8,10 @@ namespace dotnet6_vite.Helpers;
 public class JwtMiddleware
 {
     private readonly RequestDelegate _next;
-    private readonly JwtSetting _jwtSetting;
-    
-    public JwtMiddleware(RequestDelegate next, IOptions<JwtSetting> jwtSetting)
+
+    public JwtMiddleware(RequestDelegate next)
     {
         _next = next;
-        _jwtSetting = jwtSetting.Value;
     }
     
     public async Task Invoke(HttpContext context, IUserService userService)
@@ -32,7 +29,7 @@ public class JwtMiddleware
         try
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_jwtSetting.Secret);
+            var key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET"));
             tokenHandler.ValidateToken(token, new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,

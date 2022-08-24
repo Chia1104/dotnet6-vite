@@ -1,4 +1,4 @@
-﻿import { UUID } from "@chia/util/types";
+﻿import { type UUID } from "@chia/shared/types";
 
 export const getAllUsers = async (
   token: string

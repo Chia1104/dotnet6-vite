@@ -9,6 +9,7 @@ module.exports = {
     "standard",
     "plugin:prettier/recommended",
     "eslint-config-prettier",
+    "plugin:@typescript-eslint/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -21,6 +22,7 @@ module.exports = {
   plugins: ["react", "@typescript-eslint", "prettier"],
   rules: {
     "react/react-in-jsx-scope": "off",
+    "react/no-unescaped-entities": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/no-unused-vars": "warn",

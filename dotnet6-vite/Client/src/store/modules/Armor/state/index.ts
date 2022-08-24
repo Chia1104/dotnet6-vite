@@ -1,4 +1,4 @@
-﻿import type { Armor } from "@chia/util/types";
+﻿import type { Armor } from "@chia/shared/types";
 
 export interface IArmorState {
   allArmors: {

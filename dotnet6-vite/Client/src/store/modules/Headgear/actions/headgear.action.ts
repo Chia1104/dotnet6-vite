@@ -1,6 +1,6 @@
 ﻿import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getAllHeadgear, getHeadgear } from "@chia/api/item";
-import type { UUID } from "@chia/util/types";
+import type { UUID } from "@chia/shared/types";
 
 export const getAllHeadgearAsync = createAsyncThunk(
   "headgear/getAllHeadgear",
