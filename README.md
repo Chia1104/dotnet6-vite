@@ -30,11 +30,11 @@ $ cd dotnet6-vite\Client
 $ pnpm install 
 ```
 
-Generate the appsettings.Development.json file and add your DB connection string.
+Generate the `.env` file and add your DB connection string.
 
 ```bash
 $ cd dotnet6-vite
-$ cp appsettings.Example.json appsettings.Development.json
+$ cp .env.example .env
 ```
 
 The .NET Entity Framework Core tools (dotnet ef) are used to generate EF Core migrations, to install the EF Core tools globally.
@@ -68,5 +68,5 @@ $ dotnet run watch
 Build the docker image in the root of the project folder
 
 ```bash
-$ docker build -f dotnet6-vite\Dockerfile -t app:test .
+$ docker build -t app:test .
 ```

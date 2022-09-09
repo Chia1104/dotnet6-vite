@@ -7,7 +7,9 @@ public class DataContext : DbContext
 {
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        options.UseNpgsql(Environment.GetEnvironmentVariable("DB_URL"));
+        options.UseNpgsql(
+            $"Host={Environment.GetEnvironmentVariable("DB_HOST")}:{Environment.GetEnvironmentVariable("DB_PORT")};Database={Environment.GetEnvironmentVariable("DB_DATABASE")};Username={Environment.GetEnvironmentVariable("DB_USERNAME")};Password={Environment.GetEnvironmentVariable("DB_PASSWORD")}"
+        );
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
