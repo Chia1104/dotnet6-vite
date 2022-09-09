@@ -4,6 +4,10 @@ This is a practice project for [.Net Core](https://dotnet.microsoft.com/) and [R
 
 A simple game that player can equip items and see their stats.
 
+### Deployments
+
+-   [Railway](https://dotnet6-vite-production.up.railway.app/)
+
 ## Language and Tools
 
 <div align="center">
@@ -21,11 +25,11 @@ A simple game that player can equip items and see their stats.
 Install dependencies
 
 ```bash
-# dotnet
+# server
 $ cd dotnet6-vite
 $ dotnet restore
 
-# vite
+# client
 $ cd dotnet6-vite\Client
 $ pnpm install 
 ```
@@ -33,6 +37,7 @@ $ pnpm install
 Generate the `.env` file and add your DB connection string.
 
 ```bash
+# server
 $ cd dotnet6-vite
 $ cp .env.example .env
 ```
@@ -46,6 +51,7 @@ $ dotnet tool install -g dotnet-ef
 Run the following command from the project root folder to install the EF Core design package, it provides cross-platform command line tooling support and is used to generate EF Core migrations.
 
 ```bash
+# server
 $ cd dotnet6-vite
 $ dotnet ef migrations add InitialCreate
 $ dotnet ef database update
@@ -54,6 +60,7 @@ $ dotnet ef database update
 Generate https certificate before running the app.
 
 ```bash
+# client
 $ cd dotnet6-vite\Client
 $ pnpm prestart
 ```
@@ -61,6 +68,7 @@ $ pnpm prestart
 Run the app.
 
 ```bash
+# server
 $ cd dotnet6-vite
 $ dotnet run watch
 ```
