@@ -19,7 +19,7 @@ interface Props {
   inputClassName?: string | undefined;
 }
 
-const ConfirmPassword: FC<Props> = forwardRef((props, ref) => {
+const ConfirmPassword: FC<Props> = forwardRef((props: Props, ref) => {
   const {
     title,
     error,
@@ -64,5 +64,7 @@ const ConfirmPassword: FC<Props> = forwardRef((props, ref) => {
     </>
   );
 });
+
+ConfirmPassword.displayName = "ConfirmPassword";
 
 export default ConfirmPassword;

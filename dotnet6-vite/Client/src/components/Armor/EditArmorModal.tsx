@@ -1,16 +1,14 @@
 ﻿import { type FC, useEffect } from "react";
-import EditItemModal from "@chia/components/Modal/EditItem";
+import { EditItem as EditItemModal } from "@chia/components/Modal";
 import EditArmorList from "./EditArmorList";
 import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 import { useAppSelector } from "@chia/hooks/useAppSelector";
 import { getAllArmorsAsync } from "@chia/store/modules/Armor/actions";
 import { selectAllArmors } from "@chia/store/modules/Armor";
-import type { Armor } from "@chia/shared/types";
 import {
   selectActionSheet,
   activeEditArmorModal,
 } from "@chia/store/modules/ActionSheet";
-
 import { Loading } from "@geist-ui/core";
 
 const EditArmorModal: FC = () => {

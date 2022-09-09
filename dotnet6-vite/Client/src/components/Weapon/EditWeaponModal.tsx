@@ -1,11 +1,10 @@
 ﻿import { type FC, useEffect } from "react";
-import EditItemModal from "@chia/components/Modal/EditItem";
+import { EditItem as EditItemModal } from "@chia/components/Modal";
 import EditWeaponList from "./EditWeaponList";
 import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 import { useAppSelector } from "@chia/hooks/useAppSelector";
 import { getAllWeaponsAsync } from "@chia/store/modules/Weapon/actions";
 import { selectAllWeapons } from "@chia/store/modules/Weapon";
-import type { Weapon } from "@chia/shared/types";
 import {
   selectActionSheet,
   activeEditWeaponModal,

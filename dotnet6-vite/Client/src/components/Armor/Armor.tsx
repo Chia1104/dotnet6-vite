@@ -4,7 +4,7 @@ import { Capacity, Image } from "@geist-ui/core";
 import { getLevelImage, getItemColor, getHeavinessColor } from "@chia/util";
 import { useHover, useReadLocalStorage } from "usehooks-ts";
 import { motion } from "framer-motion";
-import ButtonPrimary from "@chia/components/ButtonPrimary";
+import { ButtonPrimary } from "@chia/components";
 import { useParams } from "react-router-dom";
 import { activeEditArmorModal } from "@chia/store/modules/ActionSheet";
 import { useAppDispatch } from "@chia/hooks/useAppDispatch";

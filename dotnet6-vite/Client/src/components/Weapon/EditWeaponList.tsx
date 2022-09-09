@@ -1,9 +1,8 @@
 ﻿import { type FC } from "react";
 import { WeaponItem } from "./Weapon";
 import type { Weapon, LocalUser } from "@chia/shared/types";
-import ButtonPrimary from "@chia/components/ButtonPrimary";
+import { ButtonPrimary } from "@chia/components";
 import { useReadLocalStorage } from "usehooks-ts";
-
 import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 import {
   postUserWeaponAsync,

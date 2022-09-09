@@ -2,20 +2,18 @@ import { useNavigate } from "react-router-dom";
 import { GeistProvider } from "@geist-ui/core";
 import { useLocalStorage } from "usehooks-ts";
 import { getRoleImage } from "@chia/util";
-import Avatar from "@chia/components/Avatar";
 import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 import { useAppSelector } from "@chia/hooks/useAppSelector";
 import {
   activeDrawer,
   selectActionSheet,
 } from "@chia/store/modules/ActionSheet";
-import Drawer from "@chia/components/Drawer";
-import Router from "@chia/components/Router";
+import { Drawer, Router, Avatar } from "@chia/components";
 import RankImg from "./assets/rank.png";
 import PackageImg from "./assets/package.png";
 import PaperImg from "./assets/paper.png";
 import LoginImg from "./assets/login.png";
-import Logout from "@chia/components/Icons/Logout";
+import { Logout } from "@chia/components/Icons";
 import Anonymous from "./assets/anonymous.png";
 import type { LocalUser } from "@chia/shared/types";
 

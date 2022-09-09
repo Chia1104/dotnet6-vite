@@ -1,7 +1,7 @@
 ﻿import { type FC } from "react";
 import type { User } from "@chia/shared/types";
 import { getRoleImage } from "@chia/util";
-import Avatar from "@chia/components/Avatar";
+import { Avatar } from "@chia/components";
 import Anonymous from "@chia/assets/anonymous.png";
 import { useNavigate, Link } from "react-router-dom";
 

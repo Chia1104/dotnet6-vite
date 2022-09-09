@@ -3,7 +3,6 @@ import { ShieldItem } from "./Shield";
 import type { Shield, LocalUser } from "@chia/shared/types";
 import ButtonPrimary from "@chia/components/ButtonPrimary";
 import { useReadLocalStorage } from "usehooks-ts";
-
 import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 import {
   postUserShieldAsync,

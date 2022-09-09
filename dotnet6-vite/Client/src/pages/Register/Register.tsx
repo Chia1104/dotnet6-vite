@@ -15,13 +15,15 @@ import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 import { useAppSelector } from "@chia/hooks/useAppSelector";
 import { useLocalStorage } from "usehooks-ts";
 import { Link, useNavigate } from "react-router-dom";
-import EmailInput from "@chia/components/EmailInput";
-import PasswordInput from "@chia/components/PasswordInput";
-import Button from "@chia/components/Button";
-import Spinner from "@chia/components/Spinner";
-import Back from "@chia/components/Icons/Back";
-import ConfirmPassword from "@chia/components/ConfirmPassword";
-import Input from "@chia/components/Input";
+import {
+  EmailInput,
+  PasswordInput,
+  Button,
+  Spinner,
+  ConfirmPassword,
+  Input,
+} from "@chia/components";
+import { Back } from "@chia/components/Icons";
 
 const RegisterPage: FC = () => {
   const { setToast } = useToasts();

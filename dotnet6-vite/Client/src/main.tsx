@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import { store } from "@chia/store";
-import { ErrorBoundary } from "@chia/components/Exception/ErrorBoundary";
+import { ErrorBoundary } from "@chia/components/Exception";
 import { Provider } from "react-redux";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

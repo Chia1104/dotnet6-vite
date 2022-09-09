@@ -1,7 +1,7 @@
 ﻿import { type FC } from "react";
 import { Modal, Image } from "@geist-ui/core";
 import type { Armor, Headgear, Shield, Weapon } from "@chia/shared/types";
-import StateCard from "@chia/components/StateCard";
+import { StateCard } from "@chia/components";
 
 interface Props {
   isOpen: boolean;

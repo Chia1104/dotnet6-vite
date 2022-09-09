@@ -14,12 +14,9 @@ import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 import { useAppSelector } from "@chia/hooks/useAppSelector";
 import { useLocalStorage } from "usehooks-ts";
 import { Link, useNavigate } from "react-router-dom";
-import EmailInput from "@chia/components/EmailInput";
-import PasswordInput from "@chia/components/PasswordInput";
-import Button from "@chia/components/Button";
-import Spinner from "@chia/components/Spinner";
-import GameStory from "@chia/components/Animation/GameStory";
-import Back from "@chia/components/Icons/Back";
+import { EmailInput, PasswordInput, Button, Spinner } from "@chia/components";
+import { GameStory } from "@chia/components/Animation";
+import { Back } from "@chia/components/Icons";
 import type { LocalUser } from "@chia/shared/types";
 
 const LoginPage: FC = () => {

@@ -18,7 +18,7 @@ interface Props {
   inputClassName?: string | undefined;
 }
 
-const EmailInput: FC<Props> = forwardRef((props, ref) => {
+const EmailInput: FC<Props> = forwardRef((props: Props, ref) => {
   const { title, error, placeholder, titleClassName, inputClassName } = props;
   const [isError, setIsError] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
@@ -56,5 +56,7 @@ const EmailInput: FC<Props> = forwardRef((props, ref) => {
     </>
   );
 });
+
+EmailInput.displayName = "EmailInput";
 
 export default EmailInput;

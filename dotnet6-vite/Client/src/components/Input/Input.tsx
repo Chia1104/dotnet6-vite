@@ -25,7 +25,7 @@ interface Props
   schema: ZodType<any>;
 }
 
-const Input: FC<Props> = forwardRef((props, ref) => {
+const Input: FC<Props> = forwardRef((props: Props, ref) => {
   const {
     title,
     error,
@@ -53,7 +53,7 @@ const Input: FC<Props> = forwardRef((props, ref) => {
       </label>
       <input
         ref={ref}
-        id={`${id}-email-input`}
+        id={`${id}-input`}
         placeholder={placeholder}
         onChange={onChange}
         required
@@ -71,5 +71,7 @@ const Input: FC<Props> = forwardRef((props, ref) => {
     </>
   );
 });
+
+Input.displayName = "Input";
 
 export default Input;

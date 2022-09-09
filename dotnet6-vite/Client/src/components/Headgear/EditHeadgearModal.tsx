@@ -1,16 +1,14 @@
 ﻿import { type FC, useEffect } from "react";
-import EditItemModal from "@chia/components/Modal/EditItem";
+import { EditItem as EditItemModal } from "@chia/components/Modal";
 import EditHeadgearList from "./EditHeadgearList";
 import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 import { useAppSelector } from "@chia/hooks/useAppSelector";
 import { getAllHeadgearAsync } from "@chia/store/modules/Headgear/actions";
 import { selectAllHeadgear } from "@chia/store/modules/Headgear";
-import type { Headgear } from "@chia/shared/types";
 import {
   selectActionSheet,
   activeEditHeadgearModal,
 } from "@chia/store/modules/ActionSheet";
-
 import { Loading } from "@geist-ui/core";
 
 const EditHeadgearrModal: FC = () => {

@@ -1,11 +1,10 @@
 ﻿import { type FC, useEffect } from "react";
-import EditItemModal from "@chia/components/Modal/EditItem";
+import { EditItem as EditItemModal } from "@chia/components/Modal";
 import EditShieldList from "./EditShieldList";
 import { useAppDispatch } from "@chia/hooks/useAppDispatch";
 import { useAppSelector } from "@chia/hooks/useAppSelector";
 import { getAllShieldsAsync } from "@chia/store/modules/Shield/actions";
 import { selectAllShields } from "@chia/store/modules/Shield";
-import type { Shield } from "@chia/shared/types";
 import {
   selectActionSheet,
   activeEditShieldModal,
