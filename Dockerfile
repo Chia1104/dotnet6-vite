@@ -8,7 +8,8 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
     && apt-get install -y \
         nodejs \
-    && rm -rf /var/lib/apt/lists/* 
+    && rm -rf /var/lib/apt/lists/* \
+    && corepack enable
 
 WORKDIR /src
 COPY dotnet6-vite.sln .
